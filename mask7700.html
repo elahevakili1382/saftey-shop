@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ماسک ایمنی</title>
+		<!-- bootsrtap icon -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+		<!-- swiper -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+			integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="index.css" />
+	</head>
+	<body>
+		<!-- header section starts -->
+
+		<header class="header">
+			<input type="checkbox" id="hambergur" />
+			<label for="hambergur" id="bar"
+				><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
+			</label>
+			<div class="header-1">
+				<a href="#" class="logo"> <i class="fas fa-book"></i>ایمنی</a>
+
+				<form action="" class="search-form">
+					<input type="search" name="" placeholder="جست و جو..." id="search-box" />
+					<label for="search-box" class="fas fa-search"
+						><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
+					</label>
+				</form>
+
+				<div class="icons">
+					<div id="search-btn" class="fas fa-search"></div>
+					<a href="" class="fas fa-heart"></a>
+					<a href="" class="fas fa-shopping-cart"></a>
+					<div id="login-btn" class="fas fa-user"></div>
+				</div>
+			</div>
+
+			<!-- menu -->
+
+			<div class="header-2">
+				<nav class="navbar" id="nav">
+					<ul>
+						<li><a href="#">صفحه اصلی</a></li>
+						<li>
+							<a href="imeni.html">ایمنی</a>
+						</li>
+						<li>
+							<a href="#" class="active">تجهیزات ایمنی</a>
+							<ul class="submenu">
+								<li><a href="#">ماسک ایمنی </a></li>
+								<li><a href="#">چکمه لاستیکی</a></li>
+								<li><a href="#">دستکش ایمنی </a></li>
+								<li><a href="#">گوشی صداگیر</a></li>
+							</ul>
+						</li>
+						<!-- Other list items -->
+						<li>
+							<a href="#">تجهیزات آتش نشانی</a>
+							<ul class="submenu">
+								<li><a href="#">سیستم اعلان حریق </a></li>
+								<li><a href="#">دستگاه تنفس</a></li>
+								<li><a href="#">کپسول اکسیژن </a></li>
+								<li><a href="#">پتو نسوز </a></li>
+								<li><a href="#">کپسول آتش نشانی </a></li>
+								<li><a href="#">خرید جعبه آتش نشانی </a></li>
+								<li><a href="#">اتصالات آتش نشانی </a></li>
+								<li><a href="#">لباس آتش نشانی </a></li>
+								<li><a href="#">شیلنگ آتش نشانی </a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">تجهیزات کار در ارتفاع</a>
+							<ul class="submenu">
+								<li><a href="#">کمربند ایمنی </a></li>
+								<li><a href="#">جعبه کمک های اولیه </a></li>
+								<li><a href="#">تشک نجات</a></li>
+								<li><a href="#">کلاه کار در ارتفاع</a></li>
+								<li><a href="#"> چراغ قوه</a></li>
+								<li><a href="#">نردبان طنابی</a></li>
+								<li><a href="#">طناب ابریشمی</a></li>
+								<li><a href="#">گازسنج</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">تجهیزات ترافیکی</a>
+							<ul class="submenu">
+								<li><a href="#">سرعت گیر</a></li>
+								<li><a href="#">چشم گربه ای</a></li>
+								<li><a href="#">راهبند</a></li>
+								<li><a href="#">ایست دستی </a></li>
+								<li><a href="#">نوار خط</a></li>
+								<li><a href="#">آیینه محدب</a></li>
+								<li><a href="#">مخروط ترافیکی</a></li>
+								<li><a href="#">گل میخ ترافیکی</a></li>
+								<li><a href="#">بولارد ترافیکی</a></li>
+								<li><a href="#">تابلو ترافیکی</a></li>
+								<li><a href="#">جلیقه ترافیکی</a></li>
+								<li><a href="#">اورکت راهداری</a></li>
+								<li><a href="#">چراغ راهنمایی</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">تجهیزات برقی</a>
+							<ul class="submenu">
+								<li><a href="#">مقالات2</a></li>
+								<li><a href="#">مقالات3</a></li>
+								<li><a href="#">مقالات4</a></li>
+								<li><a href="#">مقالات5</a></li>
+							</ul>
+						</li>
+						<a href="" id="close"> <i class="far fa-times"></i></a>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<section id="productdetail" class="section-p1">
+			<div class="single-pro-image">
+				<img src="images/mask/7700-1.jpg" width="100%" alt="" id="MainImg" />
+
+				<div class="small-img-group">
+					<div class="small-img-col">
+						<img src="images/mask/np-7700-gp_1_2.jpg" width="100%" class="small-img" alt="" />
+					</div>
+					<div class="small-img-col">
+						<img src="" width="100%" class="small-img" alt="" />
+					</div>
+					<div class="small-img-col">
+						<img src="" width="100%" class="small-img" alt="" />
+					</div>
+					<div class="small-img-col">
+						<img src="" width="100%" class="small-img" alt="" />
+					</div>
+				</div>
+			</div>
+
+			<div class="single-pro-detail">
+				<h4>تجهیزات ایمنی / ماسک ایمنی</h4>
+				<h2>ماسک ایمنی دو فیلتر نیم صورت 7700north</h2>
+				<h6>2.300.000 T</h6>
+				<select>
+					<option>انتخاب سایز</option>
+					<option>کوچک</option>
+					<option>متوسط</option>
+					<option>بزرگ</option>
+				</select>
+
+				<input type="number" value="1" />
+				<button class="normal">افزودن به سبد</button>
+				<h4>جزییات محصول</h4>
+				<span>
+					ماسک تنفسی 7700 North Half Face در بسیاری از صنایع استفاده می شود. با این حال ما این ماسک را برای حذف آزبست تبلیغ می کنیم. ماسک سری North 7700 دارای طراحی سبک و کم مشخصات برای پذیرش
+					بیشتر کارگران است. درپوش های چک و فیلتر گنبدی به کارگران این امکان را می دهد که بدون برداشتن فیلترها یا کارتریج ها، بررسی تناسب فشار منفی را انجام دهند. طراحی دریچه بازدم همچنین امکان
+					بررسی آسان تناسب فشار مثبت را فراهم می کند.
+				</span>
+			</div>
+		</section>
+
+		<!-- other mask -->
+		<section id="product1" class="section-p1">
+			<h1 class="heading"><span>ماسک ایمنی</span></h1>
+			<div class="pro-container">
+				<div class="pro">
+					<img src="images/mask/5500-north.jpg" alt="" />
+					<div class="des">
+						<span>ماسک ایمنی</span>
+						<h5>ماسک ایمنی دو فیلتر 5500 north</h5>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+
+				<div class="pro">
+					<img src="images/mask/duetta-2filter-mask.jpg" alt="" />
+					<div class="des">
+						<span>ماسک ایمنی</span>
+						<h5>ماسک دو فیلتر duetta</h5>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+
+				<div class="pro">
+					<img src="images/mask/7502-3m.avif" alt="" />
+					<div class="des">
+						<span>ماسک ایمنی</span>
+						<a href="mask7502.html"><h5>ماسک دو فیلتر 7502</h5></a>
+
+						<h6>3m</h6>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+
+				<div class="pro">
+					<img src="images/mask/np-7700-gp_1_2.jpg" alt="" />
+					<div class="des">
+						<span>ماسک ایمنی</span>
+						<a href="mask7700.html"> <h5>ماسک ایمنی نیم صورت دو فیلتر 7700</h5> </a>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+
+				<div class="pro">
+					<img src="images/mask/6200-1.avif" alt="" />
+					<div class="des">
+						<span> ماسک ایمنی</span>
+						<h5>ماسک ایمنی نیم صورت دو فیلتر 6200 3m</h5>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+
+				<div class="pro">
+					<img src="images/allview/full-face-mask-3.avif" alt="" />
+					<div class="des">
+						<span>ماسک ایمنی</span>
+						<h5>ماسک تمام صورت ایمنی</h5>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+
+				<div class="pro">
+					<img src="images/allview/half-mask-1.avif" alt="" />
+					<div class="des">
+						<span>ماسک ایمنی</span>
+						<h5>ماسک نیمه صورت ایمنی</h5>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+
+				<div class="pro">
+					<img src="images/allview/x-plore-6300-v2-3-2-full-face.avif" alt="" />
+					<div class="des">
+						<span>ماسک ایمنی</span>
+						<h5>ماسک ایمنی یک فیلتر</h5>
+						<div class="star">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+						</div>
+						<h4>250$</h4>
+					</div>
+					<a href=""><i class="bi bi-cart cart"></i></a>
+				</div>
+			</div>
+		</section>
+
+		<!-- section feacured start  -->
+		<section class="featured" id="featured">
+			<h1 class="heading">
+				<span>محصولات بروز</span>
+			</h1>
+
+			<div class="swiper featured-slider">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/boot1.png" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>کفش کار</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/glove1.webp" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>دستکش</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/hamlet1.png" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>کلاه ایمنی</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد </a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/traffic-control.jpg" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>کنترل کننده ترافیک</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/glove2.png" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>دستکش</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/flashlight.png" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>چراغ قوه</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/handheld.png" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>چراغ دستی</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد </a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/Wildland PPE-TFS.png" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>لباس محیط زیست</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/tools.jpg" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>ابزار ایمنی</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="swiper-slide box">
+						<div class="icons">
+							<a href="" class="fas fa-search"></a>
+							<a href="" class="fas fa-heart"></a>
+							<a href="" class="fas fa-eye"></a>
+						</div>
+
+						<div class="image">
+							<img src="images/saftey-mask.avif" alt="" />
+						</div>
+
+						<div class="content">
+							<h3>ماسک ایمنی</h3>
+							<div class="price">
+								1.300.000
+								<span>1200000تومان</span>
+								<a href="#" class="btn">افزودن به سبد</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
+		</section>
+
+		<!-- header section end -->
+		<!-- bottom navbar -->
+		<nav class="bottom-navbar">
+			<a href="#home" class="fas fa-home"></a>
+			<a href="#featured" class="fas fa-list"></a>
+			<a href="#arrivals" class="fas fa-tags"></a>
+			<a href="#reviews" class="fas fa-comments"></a>
+			<a href="#blogs" class="fas fa-blog"></a>
+		</nav>
+
+		<!-- login form -->
+		<div class="login-form-container">
+			<div id="close-login-btn" class="fas fa-times"></div>
+
+			<form action="">
+				<h3>ورود</h3>
+				<span>نام کاربری</span>
+				<input type="email" class="box" placeholder="ایمیل خود را وارد کنید" id="" />
+				<span>رمز عبور</span>
+				<input type="password" class="box" placeholder="رمز خود را وارد کنید" id="" />
+
+				<div class="checkbox">
+					<input type="checkbox" name="" id="remember-me" />
+					<label for="remember-me">مرا بخاطر بسپار</label>
+				</div>
+
+				<input type="submit" value="ورود" class="btn" />
+				<p>آیا رمز عبور خود را فراموش کردید؟ <a href="">اینجا کلیک کنید</a></p>
+				<p>آیا حساب کاربری ندارید؟ <a href="">ایجاد حساب کاربری</a></p>
+			</form>
+		</div>
+
+		<!-- newsletter -->
+		<section class="newsletter">
+			<form action="">
+				<h3>برای آخرین بروزرسانی ما را دنبال کنید</h3>
+				<input type="email" name="" placeholder="ایمیل خود را وارد کنید" id="" class="box" />
+				<input type="submit" name="subscribe" class="btn" />
+			</form>
+		</section>
+
+		<!-- footer section -->
+		<section class="footer">
+			<div class="box-container">
+				<div class="box">
+					<h3>موقعیت مکانی</h3>
+					<a href=""><i class="fas fa-map-marker-alt"></i>ایران،تهران،میدان حسن آباد، خیابان امام خمینی</a>
+				</div>
+
+				<div class="box">
+					<h3>دسترسی سریع</h3>
+					<a href=""><i class="fas fa-arrow-left"></i>خانه</a>
+					<a href=""><i class="fas fa-arrow-left"></i>محصولات بروز </a>
+					<a href=""><i class="fas fa-arrow-left"></i>کلاه ایمنی</a>
+					<a href=""><i class="fas fa-arrow-left"></i>نظرات کاربران</a>
+				</div>
+
+				<div class="box">
+					<h3>لینک خارجی</h3>
+					<a href=""><i class="fas fa-arrow-left"></i>اطلاعات تماس</a>
+					<a href=""><i class="fas fa-arrow-left"></i>سفارش ها</a>
+					<a href=""><i class="fas fa-arrow-left"></i>حفظ حریم خصوصی</a>
+					<a href=""><i class="fas fa-arrow-left"></i>روش های پرداخت </a>
+					<a href=""><i class="fas fa-arrow-left"></i>خدمات ما</a>
+				</div>
+
+				<div class="box">
+					<h3>اطلاعات تماس</h3>
+					<a href=""><i class="fas fa-phone"></i>09368305628</a>
+					<a href=""><i class="fas fa-phone"></i>09106419678</a>
+					<a href=""><i class="fas fa-envelope"></i>elahevakili8@gmail.com</a>
+				</div>
+			</div>
+
+			<div class="share">
+				<a href="" class="fab fa-instagram"></a>
+				<a href="" class="fab fa-telegram"></a>
+				<a href="" class="fab fa-whatsapp"></a>
+				<a href="" class="fab fa-linkedin"></a>
+			</div>
+
+			<div class="credit">created by <span>elahe vakili</span> | تمامی حقوق محفوظ است</div>
+		</section>
+
+		<!-- script -->
+
+		<script>
+			let MainImg = document.getElementById("MainImg");
+			let smallImg = document.getElementsByClassName("small-img");
+
+			smallImg[0].onclick = function () {
+				MainImg.src = smallImg[0].src;
+			};
+
+			smallImg[1].onclick = function () {
+				MainImg.src = smallImg[1].src;
+			};
+
+			smallImg[2].onclick = function () {
+				MainImg.src = smallImg[2].src;
+			};
+
+			smallImg[3].onclick = function () {
+				MainImg.src = smallImg[3].src;
+			};
+		</script>
+
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+			crossorigin="anonymous"
+		></script>
+
+		<script src="index.js"></script>
+	</body>
+</html>
