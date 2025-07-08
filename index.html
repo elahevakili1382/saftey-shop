@@ -1,15 +1,107 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./css/output.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>سیفتی مارکت</title>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet" /> -->
+   <link rel="stylesheet" href="./css/output.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-white">
 
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<header class="sticky top-0 z-50 mt-5 bg-white shadow-md">
+  <div class="flex items-center justify-between mx-5 h-12">
+    <div class="text-2xl font-bold text-orange-500">سیفتی مارکت</div>
+
+    <!-- جستجو دسکتاپ -->
+    <div class="hidden md:flex w-full max-w-md relative items-center">
+      <input
+        type="text"
+        placeholder="...جست و جو"
+        class="w-full rounded-r-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+      />
+      <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-700 pointer-events-none px-3"></i>
+    </div>
+
+    <!-- آیکن‌ها -->
+    <div class="flex items-center gap-4 text-xl text-gray-600">
+      <button title="حساب کاربری" class="hover:text-orange-500 transition"><i class="fas fa-user"></i></button>
+      <button title="علاقه‌مندی‌ها" class="hover:text-orange-500 transition"><i class="fas fa-heart"></i></button>
+      <button title="سبد خرید" class="relative hover:text-orange-500 transition">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cartCount" class="absolute -top-2 -right-2 rounded-full bg-red-500 px-2 py-0.5 text-xs text-white hidden">0</span>
+      </button>
+
+      <!-- منوی موبایل -->
+      <button id="mobileMenuBtn" aria-label="باز کردن منو" class="text-2xl text-orange-500 md:hidden focus:outline-none z-50">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- منوی دسکتاپ -->
+  <nav class="hidden md:block bg-orange-500 py-2 mx-0 px-3">
+    <ul class="flex justify-center gap-8 items-center text-sm font-semibold text-white">
+      <li class="group relative cursor-pointer text-base">
+        <a href="/" class="block">صفحه اصلی</a>
+      </li>
+
+      <!-- نمونه منوی دارای زیرمنو -->
+      <li class="group relative cursor-pointer text-base">
+        <span>تجهیزات حفاظت فردی</span>
+        <ul
+          class="absolute right-0 mt-2 hidden w-48 flex-col bg-white text-orange-700 shadow-md border border-orange-800 group-hover:flex z-40"
+        >
+          <li><a href="/products/category/jabe-komek" class="block px-4 py-2 hover:bg-orange-600 hover:text-white">جعبه کمک‌های اولیه</a></li>
+          <li><a href="/products/category/potin-kafsh" class="block px-4 py-2 hover:bg-orange-600 hover:text-white">پوتین و کفش اداری</a></li>
+          <!-- باقی موارد رو به همین شکل اضافه کنید -->
+        </ul>
+      </li>
+
+      <li><a href="/products/category/tehjizat-tenfosi" class="block">تجهیزات تنفسی</a></li>
+
+      <!-- منوهای بیشتر ... -->
+
+      <li><a href="/contact" class="block">تماس با ما</a></li>
+    </ul>
+  </nav>
+
+  <!-- منوی موبایل -->
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+  <aside
+    id="mobileMenu"
+    class="fixed top-0 right-0 z-50 h-full max-w-xs w-3/4 overflow-y-auto bg-white shadow-lg transform translate-x-full transition-transform duration-300 md:hidden"
+  >
+    <div class="flex items-center justify-between border-b px-4 py-4">
+      <span class="text-lg font-bold text-orange-600">منو</span>
+      <button id="closeMobileMenu" aria-label="بستن منو">
+        <i class="fas fa-times text-xl text-orange-600"></i>
+      </button>
+    </div>
+
+    <ul class="flex flex-col gap-4 text-base font-semibold px-4 py-6 text-orange-800">
+      <li><a href="/" class="block py-2">صفحه اصلی</a></li>
+      <li>
+        <details>
+          <summary class="cursor-pointer py-2">تجهیزات حفاظت فردی</summary>
+          <ul class="pl-4 mt-2 flex flex-col gap-2 text-orange-600">
+            <li><a href="/products/category/jabe-komek" class="hover:text-black">جعبه کمک‌های اولیه</a></li>
+            <li><a href="/products/category/potin-kafsh" class="hover:text-black">پوتین و کفش اداری</a></li>
+            <!-- باقی موارد -->
+          </ul>
+        </details>
+      </li>
+      <li><a href="/products/category/tehjizat-tenfosi" class="block py-2">تجهیزات تنفسی</a></li>
+      <!-- بقیه منوها ... -->
+      <li><a href="/contact" class="block py-2">تماس با ما</a></li>
+    </ul>
+  </aside>
+</header>
+
+<script src="./src/main.js">
+ 
+</script>
+
+</body>
 </html>
