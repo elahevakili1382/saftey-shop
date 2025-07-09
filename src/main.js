@@ -1,4 +1,6 @@
-import '/css/styles.css';
+import '../css/styles.css';
+import '../css/output.css';
+
 
 // داده‌های منو
 const navItems = [
