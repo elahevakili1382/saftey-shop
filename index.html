@@ -6,65 +6,302 @@
     <title>سیفتی مارکت | فروشگاه تجهیزات ایمنی</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-  </head>
-  <body class="bg-white text-gray-800 font-sans">
+<!-- <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+ -->
 
-    <!-- Header -->
-    <header class="bg-white sticky top-0 z-50 w-full mt-5 shadow-md">
-      <div class="flex items-center justify-between h-12 mx-5">
-        <div class="text-orange-500 text-2xl font-bold">سیفتی مارکت</div>
+<style>
+    @font-face {
+      font-family: 'Vazir';
+src: url('/saftey-shop/fonts/Vazir.woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+  body {
+    font-family: 'Vazir', sans-serif;
+  }
+  .rtl {
+    direction: rtl;
+  }
 
-        <!-- Search -->
-        <div class="hidden md:flex w-full max-w-md relative items-center">
-          <input
-            type="text"
-            placeholder="...جست و جو"
-            class="w-full rounded-r-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
-          />
-          <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-700"></i>
-        </div>
+  .newletter {
+    background: url('/images/letter-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+  }
 
-        <!-- Icons -->
-        <div class="flex items-center gap-4 text-gray-600 text-xl">
-          <i class="fas fa-user hover:text-orange-500 transition" title="حساب کاربری"></i>
-          <i class="fas fa-heart hover:text-orange-500 transition" title="علاقه‌مندی‌ها"></i>
-          <a href="/cart" class="relative">
-            <i class="fas fa-shopping-cart hover:text-orange-500 transition" title="سبد خرید"></i>
-            <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full hidden">0</span>
-          </a>
+  .bg-fixed-desktop {
+    background-attachment: fixed;
+  }
 
-          <!-- Mobile Menu Button -->
-          <button id="mobileMenuBtn" class="text-2xl text-orange-500 focus:outline-none md:hidden" aria-label="باز کردن منو">
-            <i class="fas fa-bars"></i>
+  @media (max-width: 768px) {
+    .bg-fixed-desktop {
+      background-attachment: scroll;
+    }
+  }
+
+
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-white rtl">
+
+
+<header class="sticky top-0 z-50 h-[40px] w-full mt-5 bg-white">
+  <div class="flex items-center justify-between h-full mx-5">
+    <div class="text-orange-500 text-2xl font-bold">سیفتی مارکت</div>
+    <!-- search -->
+    <div class="hidden md:flex w-full max-w-md relative items-center">
+      <input
+        type="text"
+        placeholder="...جست وجو "
+        class="w-full rounded-r-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+      />
+      <i class="fas fa-search px-3 absolute left-3 top-1/2 -translate-y-1/2 text-black pointer-events-none"></i>
+    </div>
+    <div class="flex items-center gap-4 text-gray-600 text-xl">
+      <a href="login.html">
+              <i class="fas fa-user hover:text-orange-500 transition cursor-pointer" title="حساب کاربری "></i>
+
+      </a>
+      <a href="cart.html" class="relative">
+        <i class="fas fa-shopping-cart hover:text-orange-500 transition cursor-pointer" title="سبد خرید"></i>
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full hidden">0</span>
+      </a>
+
+      <!--mobile menu icon -->
+      <div class="flex flex-row-reverse md:hidden">
+        <button id="mobileMenuBtn" class="text-2xl text-orange-500 focus:outline-none z-50" aria-label="باز کردن منو">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop menu -->
+  <nav class="hidden md:block w-full py-2 bg-orange-500 my-3 px-3">
+    <ul id="navItems" class="md:flex justify-center w-full gap-8 items-center text-sm font-semibold text-white"></ul>
+  </nav>
+
+  <!-- mobile Menu overlay -->
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden hidden"></div>
+  
+  <!-- mobile menu sidebar -->
+  <aside id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white shadow-lg z-50 overflow-y-auto transition-transform duration-300 md:hidden translate-x-full">
+    <div class="flex justify-between items-center px-4 py-4 border-b">
+      <span class="font-bold text-orange-600 text-lg">منو </span>
+      <button id="closeMobileMenu" aria-label="بستن ">
+        <i class="fas fa-times text-xl text-orange-600"></i>
+      </button>
+    </div>
+    <ul id="mobileNavItems" class="flex flex-col gap-4 text-base font-semibold px-4 py-6 text-orange-800"></ul>
+  </aside>
+</header>
+
+<!--  -->
+
+<!-- Carousel Section -->
+<div class="relative w-full h-[500px] sm:h-[500px] overflow-hidden mt-5">
+  <!-- Swiper container -->
+  <div class="swiper h-full">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide relative">
+        <img
+          src="/images/firefighter-suits-hanging-from-wall-station.png"
+          class="w-full h-full object-cover"
+          style="object-position: top 30%"
+          alt="Slide Image"
+        />
+        <div
+          class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white p-4"
+        >
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
+            لوازم ایمنی و آتش نشانی مهدی
+          </h1>
+          <button
+            class="text-white bg-orange-500 hover:bg-orange-600 text-base sm:text-lg py-2 sm:py-3 px-4 sm:px-6 rounded-3xl transition"
+          >
+            مشاهده محصولات
           </button>
         </div>
       </div>
+      <!-- در صورت نیاز، اسلایدهای بیشتری اضافه کن -->
+    </div>
+  </div>
+</div>
 
-      <!-- Desktop Menu -->
-      <nav class="hidden md:block w-full py-2 bg-orange-500 px-3 mt-3">
-        <ul class="flex justify-center gap-8 items-center text-sm font-semibold text-white" id="desktopMenu">
-          <!-- ساخته شده با جاوااسکریپت -->
-        </ul>
-      </nav>
-    </header>
+<!-- feature banner -->
+  <div id="features" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl mt-10 max-w-6xl mx-auto mb-4"></div>
 
-    <!-- Mobile Overlay -->
-    <div id="mobileOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+  <!-- محصولات بروز  -->
+    <!-- عنوان بخش -->
+    <div
+      class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 m-5"
+    >
+      <span
+        class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2"
+      >
+        محصولات بروز
+      </span>
+    </div>
 
-    <!-- Mobile Menu -->
-    <aside id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white shadow-lg z-50 overflow-y-auto transform translate-x-full transition-transform duration-300 md:hidden">
-      <div class="flex justify-between items-center px-4 py-4 border-b">
-        <span class="font-bold text-orange-600 text-lg">منو</span>
-        <button id="closeMobileMenu" aria-label="بستن">
-          <i class="fas fa-times text-xl text-orange-600"></i>
-        </button>
+    <!-- محصولات -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-16">
+      <div
+        id="product-grid"
+        class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8"
+      ></div>
+      <br>
+    </div>
+
+    <!-- فرم خبرنامه  -->
+  <div
+      class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 m-5"
+    >
+      <span
+        class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2"
+      >
+       خبرنامه 
+      </span>
+    </div>
+    <section
+  class="newletter bg-fixed-desktop object-contain mt-16 py-10 px-4 sm:px-6 lg:px-16 text-center min-h-[350px] sm:min-h-[400px] md:min-h-[300px]"
+>
+  <h2 class="text-2xl sm:text-3xl font-bold text-orange-700 mb-4">عضو خبرنامه شوید</h2>
+  <p>اولین نفری باشید که از تخفیف ها و محصولات جدید با خبر می شود</p>
+
+  <form id="newsletterForm" class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
+    <input
+      type="email"
+      id="emailInput"
+      required
+      placeholder="ایمیل شما"
+      class="w-full sm:w-2/3 px-4 py-2 rounded-lg border border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
+    />
+    <button
+      type="submit"
+      class="px-6 py-2 bg-orange-700 text-white rounded-lg hover:bg-orange-700 transition"
+    >
+      عضویت
+    </button>
+  </form>
+</section>
+
+<!-- محصولات پر فروش  -->
+
+
+
+  <section class="py-12 px-4">
+    <!-- عنوان -->
+    <div class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 m-5">
+      <span class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2">
+        محصولات پر فروش
+      </span>
+    </div>
+
+    <!-- ردیف اول -->
+    <div class="swiper mySwiper mb-8">
+      <div class="swiper-wrapper" id="first-row"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- ردیف دوم -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper" id="second-row"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- reviews -->
+
+  <section class="py-12 px-4" id="reviews">
+    <!-- عنوان -->
+    <div class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10">
+      <span class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block">
+        نظرات کاربران
+      </span>
+    </div>
+
+    <!-- اسلایدر -->
+    <div class="swiper mySwiper max-w-6xl mx-auto">
+      <div class="swiper-wrapper" id="reviews-wrapper">
+        <!-- اسلایدها به صورت داینامیک در JS ساخته می‌شن -->
       </div>
-      <ul class="flex flex-col gap-4 text-base font-semibold px-4 py-6 text-orange-800" id="mobileMenuList">
-        <!-- ساخته شده با جاوااسکریپت -->
-      </ul>
-    </aside>
+      <div class="swiper-pagination mt-6"></div>
+    </div>
+  </section>
 
-    <!-- اسکریپت اصلی Vite -->
-    <script type="module" src="./src/main.js"></script>
-  </body>
+
+  
+  <footer class="bg-gray-100 text-gray-800 py-10 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      
+      <!-- موقعیت مکانی -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">موقعیت مکانی</h3>
+        <a href="#" class="flex items-center gap-2 text-sm hover:text-orange-500">
+          <i class="fas fa-map-marker-alt"></i>
+          ایران، تهران، میدان حسن‌آباد، خیابان امام خمینی
+        </a>
+      </div>
+
+      <!-- دسترسی سریع -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">دسترسی سریع</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> خانه</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> محصولات بروز</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> کلاه ایمنی</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> نظرات کاربران</a></li>
+        </ul>
+      </div>
+
+      <!-- لینک خارجی -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">لینک خارجی</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> اطلاعات تماس</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> سفارش‌ها</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> حفظ حریم خصوصی</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> روش‌های پرداخت</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> خدمات ما</a></li>
+        </ul>
+      </div>
+
+      <!-- اطلاعات تماس -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">اطلاعات تماس</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="tel:09368305628" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-phone"></i> 09368305628</a></li>
+          <li><a href="tel:09106419678" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-phone"></i> 09106419678</a></li>
+          <li><a href="mailto:elahevakili8@gmail.com" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-envelope"></i> elahevakili8@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- آیکون شبکه‌های اجتماعی -->
+    <div class="flex justify-center gap-4 mt-8 text-xl">
+      <a href="#" class="hover:text-orange-500"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="hover:text-orange-500"><i class="fab fa-telegram"></i></a>
+      <a href="#" class="hover:text-orange-500"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="hover:text-orange-500"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <!-- اعتبار -->
+    <div class="text-center mt-6 text-sm text-gray-500">
+      ساخته شده توسط <span class="text-orange-500 font-semibold">Elahe Vakili</span> | تمامی حقوق محفوظ است
+    </div>
+  </footer>
+
+
+
+<script type="module" src="./src/main.js" defer></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+
+</body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>سبد خرید</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-6 min-h-screen font-sans">
+
+  <!-- عنوان صفحه -->
+  <h1 class="text-3xl font-bold text-orange-700 text-center mb-8">🛒 سبد خرید</h1>
+
+  <!-- محتوای سبد خرید -->
+  <div id="cart-container"
+       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+    <!-- آیتم‌ها اینجا اضافه می‌شوند از طریق cart.js -->
+  </div>
+
+  <!-- جمع کل و دکمه حذف -->
+  <div class="max-w-7xl mx-auto mt-10 text-center">
+    <div id="total" class="text-xl font-bold text-black mb-4"></div>
+
+    <button id="clear-cart"
+            class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">
+      🗑️ خالی کردن سبد خرید
+    </button>
+  </div>
+
+  <!-- اسکریپت سبد خرید -->
+  <script type="module" src="/src/cart.js"></script>
+</body>
+</html>

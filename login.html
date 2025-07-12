@@ -1,0 +1,62 @@
+<!-- فایل: auth.html -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ورود / ثبت‌نام</title>
+  <script type="module" src="/src/auth.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+       @font-face {
+      font-family: 'Vazir';
+src: url('/saftey-shop/fonts/Vazir.woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+    background-color: rgb(241, 172, 67);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen font-sans">
+  <div class="bg-white p-6 rounded-2xl shadow-xl w-full max-w-md">
+    <div class="flex justify-around mb-6">
+      <button id="loginTab" class="tab active text-orange-600 font-bold border-b-2 border-orange-500 pb-2">ورود</button>
+      <button id="registerTab" class="tab text-gray-500">ثبت‌نام</button>
+    </div>
+
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block mb-1 text-sm">ایمیل</label>
+        <input id="loginEmail" type="email" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+      <div>
+        <label class="block mb-1 text-sm">رمز عبور</label>
+        <input id="loginPassword" type="password" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+
+        <a href="/saftey-shop/forget-password.html"  class="text-xs text-right text-blue-600 hover:underline self-end">فراموشی رمز عبور؟</a>
+
+      <button type="submit" class="w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600">ورود</button>
+    </form>
+
+    <form id="registerForm" class="space-y-4 hidden">
+      <div>
+        <label class="block mb-1 text-sm">نام و نام خانوادگی</label>
+        <input id="regName" type="text" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+      <div>
+        <label class="block mb-1 text-sm">ایمیل</label>
+        <input id="regEmail" type="email" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+      <div>
+        <label class="block mb-1 text-sm">رمز عبور</label>
+        <input id="regPassword" type="password" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+      <button type="submit" class="w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600">ثبت‌نام</button>
+    </form>
+  </div>
+  <script type="module" src="/src/auth.js"></script>
+</body>
+</html>

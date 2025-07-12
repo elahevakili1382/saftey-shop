@@ -1,0 +1,79 @@
+[
+  {
+    "id":1,
+    "image": "/saftey-shop/images/hamlet1.png",
+    "title": "کلاه ایمنی مهندسی",
+    "price": "۱۵۰٬۰۰۰",
+    "description": "کلاه مقاوم با استاندارد EN397 مناسب برای محیط‌های صنعتی.",
+    "category": "کلاه ایمنی"
+    
+
+
+  },
+  {
+     "id":2,
+    "image": "/saftey-shop/images/full-face-mask-3.avif",
+    "title": "دستکش نسوز صنعتی",
+    "price": "۱۲۰٬۰۰۰"
+  },
+  {
+     "id":3,
+    "image": "/saftey-shop/images/mostsale/headlamp.webp",
+    "title": "چکمه ایمنی PVC",
+    "price": "۱۸۰٬۰۰۰"
+  },
+  {
+     "id":4,
+    "image": "/saftey-shop/images/flashlight.png",
+    "title": "ماسک فیلتردار",
+    "price": "۹۰٬۰۰۰"
+  },
+  {
+     "id":5,
+    "image": "/saftey-shop/images/glove2.png",
+    "title": "کلاه ایمنی مهندسی",
+    "price": "۱۵۰٬۰۰۰"
+  },
+  {
+     "id":6,
+    "image": "/saftey-shop/images/tools.jpg",
+    "title": "دستکش نسوز صنعتی",
+    "price": "۱۲۰٬۰۰۰"
+  },
+  {
+     "id":7,
+    "image": "/saftey-shop/images/traffic-control.jpg",
+    "title": "چکمه ایمنی PVC",
+    "price": "۱۸۰٬۰۰۰"
+  },
+  {
+     "id":8,
+    "image": "/saftey-shop/images/hamlet2.png",
+    "title": "ماسک فیلتردار",
+    "price": "۹۰٬۰۰۰"
+  },
+  {
+     "id":9,
+    "image": "/saftey-shop/images/mostsale/edge-personal-fall-limiter.jpg",
+    "title": "کلاه ایمنی مهندسی",
+    "price": "۱۵۰٬۰۰۰"
+  },
+  {
+     "id":10,
+    "image": "/saftey-shop/images/boot2.png",
+    "title": "دستکش نسوز صنعتی",
+    "price": "۱۲۰٬۰۰۰"
+  },
+  {
+     "id":11,
+    "image": "/saftey-shop/images/medical-e-plore.avif",
+    "title": "کلاه ایمنی مهندسی",
+    "price": "۱۵۰٬۰۰۰"
+  },
+  {
+     "id":12,
+    "image": "/saftey-shop/images/uvex-hearing-protect.webp",
+    "title": "دستکش نسوز صنعتی",
+    "price": "۱۲۰٬۰۰۰"
+  }
+]
