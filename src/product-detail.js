@@ -1,38 +1,82 @@
-import { fetchProducts, slugify } from './common.js';
+import { fetchProducts } from './common.js'; 
+import { addToCart } from './storage.js';
+// یک محصول فرضی ثابت برای تست
+const product = {
+  slug: 'mask-3m-6200',
+  title: 'ماسک ایمنی 2 فیلتر نیم صورت 6200',
+  price: '2,300,000',
+  category: 'تجهیزات حفاظت فردی',
+  subcategory: 'ماسک ایمنی',
+  mainImage: '/saftey-shop/images/mask/6200-1.avif',
+  gallery: [
+    '/saftey-shop/images/mask/6200-1.avif',
+    '/saftey-shop/images/mask/6200-3m-2.avif',
+    '/saftey-shop/images/mask/6200-3m-3.avif',
+    '/saftey-shop/images/mask/6200-3m-4.avif',
+  ],
+  sizes: ['کوچک', 'متوسط', 'بزرگ'],
+  description: 'صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین...'
+};
 
-function getProductIdFromURL() {
-  const urlParams = new URLSearchParams(window.location.search);
-  return parseInt(urlParams.get("id"));
+function loadProduct() {
+  const section = document.getElementById('productdetail');
+  section.style.display = 'flex';
+
+  document.getElementById('MainImg').src = product.mainImage;
+  document.getElementById('MainImg').alt = product.title;
+
+  document.getElementById('category').textContent = `${product.category} / ${product.subcategory}`;
+  document.getElementById('title').textContent = product.title;
+  document.getElementById('price').textContent = product.price + ' تومان';
+  document.getElementById('description').textContent = product.description;
+
+  const sizeSelect = document.getElementById('sizeSelect');
+  sizeSelect.innerHTML = '<option disabled selected>انتخاب سایز</option>';
+  product.sizes.forEach(size => {
+    const option = document.createElement('option');
+    option.value = size;
+    option.textContent = size;
+    sizeSelect.appendChild(option);
+  });
+
+  const gallery = document.getElementById('gallery');
+  gallery.innerHTML = '';
+  product.gallery.forEach(img => {
+    const div = document.createElement('div');
+    div.className = 'cursor-pointer';
+
+    const image = document.createElement('img');
+    image.src = img;
+    image.alt = product.title;
+    image.className = 'w-16 h-16 rounded-md hover:scale-110 transition-transform duration-200';
+
+    div.appendChild(image);
+    gallery.appendChild(div);
+
+    div.addEventListener('click', () => {
+      document.getElementById('MainImg').src = img;
+    });
+  });
+
+  // دکمه افزودن به سبد خرید
+  const quantityInput = document.getElementById('quantityInput');
+  const addToCartBtn = document.getElementById('addToCartBtn');
+
+  addToCartBtn.onclick = () => {
+    const selectedSize = sizeSelect.value;
+    const quantity = parseInt(quantityInput.value, 10);
+    if (!selectedSize) {
+      alert('لطفا سایز را انتخاب کنید');
+      return;
+    }
+    if (quantity < 1 || isNaN(quantity)) {
+      alert('لطفا تعداد معتبر وارد کنید');
+      return;
+    }
+
+    alert(`محصول ${product.title} به تعداد ${quantity} و سایز ${selectedSize} به سبد خرید اضافه شد!`);
+    // اینجا می‌تونی کد اضافه کردن به سبد خرید رو بذاری
+  };
 }
 
-(async function () {
-  const productId = getProductIdFromURL();
-  const products = await fetchProducts();
-
-  // اضافه کردن slug و categorySlug به هر محصول (اختیاری ولی مفید برای consistency)
-  const enhanced = products.map(p => ({
-    ...p,
-    slug: slugify(p.title),
-    categorySlug: slugify(p.category || 'عمومی')
-  }));
-
-  const product = enhanced.find(p => p.id === productId);
-  const container = document.getElementById("product-detail");
-
-  if (!product) {
-    container.innerHTML = "<p>محصول پیدا نشد.</p>";
-    return;
-  }
-
-  container.innerHTML = `
-    <div class="flex flex-col md:flex-row gap-6">
-      <img src="${product.image}" class="w-full md:w-1/2 object-cover rounded" alt="${product.title}" />
-      <div class="flex-1 text-right">
-        <h1 class="text-2xl font-bold mb-4">${product.title}</h1>
-        <p class="text-orange-600 text-xl mb-4">${product.price} تومان</p>
-        <p class="text-sm mb-6">${product.description || 'توضیحی برای این محصول وارد نشده است.'}</p>
-        <button class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">افزودن به سبد خرید</button>
-      </div>
-    </div>
-  `;
-})();
+document.addEventListener('DOMContentLoaded', loadProduct);

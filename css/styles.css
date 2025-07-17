@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 @import 'primeicons/primeicons.css';
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+  @font-face {
+      font-family: 'Vazir';
+     src: url('/saftey-shop/fonts/Vazir.woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+  body {
+    font-family: 'Vazir', sans-serif;
+  }
+  .rtl {
+    direction: rtl;
+  }

@@ -3,77 +3,233 @@
     "id":1,
     "image": "/saftey-shop/images/hamlet1.png",
     "title": "کلاه ایمنی مهندسی",
-    "price": "۱۵۰٬۰۰۰",
-    "description": "کلاه مقاوم با استاندارد EN397 مناسب برای محیط‌های صنعتی.",
-    "category": "کلاه ایمنی"
+    "price": "۱۵۰۰۰۰",
+    "category": " تجهیزات حفاظت فردی ",
+        "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  },
     
 
 
-  },
-  {
-     "id":2,
-    "image": "/saftey-shop/images/full-face-mask-3.avif",
-    "title": "دستکش نسوز صنعتی",
-    "price": "۱۲۰٬۰۰۰"
-  },
+
+{
+  "id": 2,
+  "image": "/saftey-shop/images/full-face-mask-3.avif",
+  "title": "دستکش نسوز صنعتی",
+  "price": "۱۲۰۰۰۰",
+  "category": " تجهیزات حفاظت فردی ",
+      "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+
+},
+
   {
      "id":3,
     "image": "/saftey-shop/images/mostsale/headlamp.webp",
-    "title": "چکمه ایمنی PVC",
-    "price": "۱۸۰٬۰۰۰"
+    "title": "چراغ قوه ",
+    "price": "۱۸۰۰۰۰",
+      "category": "تجهیزات آتش نشانی ",
+          "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
   },
   {
      "id":4,
     "image": "/saftey-shop/images/flashlight.png",
     "title": "ماسک فیلتردار",
-    "price": "۹۰٬۰۰۰"
+    "price": "۹۰۰۰۰",
+          "category": "تجهیزات آتش نشانی ",
+              "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
   },
   {
      "id":5,
     "image": "/saftey-shop/images/glove2.png",
-    "title": "کلاه ایمنی مهندسی",
-    "price": "۱۵۰٬۰۰۰"
+    "title": "دستکش ایمنی ",
+    "price": "۱۵۰۰۰۰",
+          "category": "تجهیزات آتش نشانی ",
+              "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
   },
   {
      "id":6,
     "image": "/saftey-shop/images/tools.jpg",
-    "title": "دستکش نسوز صنعتی",
-    "price": "۱۲۰٬۰۰۰"
+    "title": "ابزار ",
+    "price": "۱۲۰۰۰۰",
+  "category": " تجهیزات حفاظت فردی ",
+      "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
+    
   },
   {
      "id":7,
     "image": "/saftey-shop/images/traffic-control.jpg",
-    "title": "چکمه ایمنی PVC",
-    "price": "۱۸۰٬۰۰۰"
+    "title": "مانع ترافیکی ",
+    "price": "۱۸۰۰۰۰",
+      "category": " تجهیزات  ترافیکی ",
+          "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
   },
   {
      "id":8,
     "image": "/saftey-shop/images/hamlet2.png",
-    "title": "ماسک فیلتردار",
-    "price": "۹۰٬۰۰۰"
+    "title": "کلاه ایمنی ",
+    "price": "۹۰۰۰۰",
+      "category": " تجهیزات حفاظت فردی ",
+          "subcategory": "ماسک ایمنی",
+    "mainImage": "/images/mask/6200-1.avif",
+    "gallery": [
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
+
   },
   {
      "id":9,
     "image": "/saftey-shop/images/mostsale/edge-personal-fall-limiter.jpg",
-    "title": "کلاه ایمنی مهندسی",
-    "price": "۱۵۰٬۰۰۰"
+    "title": "ابزار ",
+    "price": "۱۵۰۰۰۰",
+          "category": " تجهیزات کار در ارتفاع ",
+              "subcategory": "ماسک ایمنی",
+    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "gallery": [
+      "/saftey-shop/images/mask/6200-1.avif",
+      "/saftey-shop/images/mask/6200-3m-2.avif",
+      "/saftey-shop/images/mask/6200-3m-3.avif",
+      "/saftey-shop/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
   },
   {
      "id":10,
     "image": "/saftey-shop/images/boot2.png",
-    "title": "دستکش نسوز صنعتی",
-    "price": "۱۲۰٬۰۰۰"
+    "title": " کفش ایمنی ",
+    "price": "۱۲۰۰۰۰",
+          "category": " تجهیزات حفاظت فردی ",
+              "subcategory": "ماسک ایمنی",
+    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "gallery": [
+      "/saftey-shop/images/mask/6200-1.avif",
+      "/saftey-shop/images/mask/6200-3m-2.avif",
+      "/saftey-shop/images/mask/6200-3m-3.avif",
+      "/saftey-shop/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
+
   },
   {
      "id":11,
     "image": "/saftey-shop/images/medical-e-plore.avif",
-    "title": "کلاه ایمنی مهندسی",
-    "price": "۱۵۰٬۰۰۰"
+    "title": " ماسک ایمنی ",
+    "price": "۱۵۰۰۰۰",
+          "category": " تجهیزات تنفسی ",
+              "subcategory": "ماسک ایمنی",
+    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "gallery": [
+      "/saftey-shop/images/mask/6200-1.avif",
+      "/saftey-shop/images/mask/6200-3m-2.avif",
+      "/saftey-shop/images/mask/6200-3m-3.avif",
+      "/saftey-shop/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
   },
   {
      "id":12,
     "image": "/saftey-shop/images/uvex-hearing-protect.webp",
-    "title": "دستکش نسوز صنعتی",
-    "price": "۱۲۰٬۰۰۰"
+    "title": "گوشی صداگیر",
+    "price": "۱۲۰۰۰۰",
+          "category": " تجهیزات حفاظت فردی ",
+              "subcategory": "ماسک ایمنی",
+    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "gallery": [
+      "/saftey-shop/images/mask/6200-1.avif",
+      "/saftey-shop/images/mask/6200-3m-2.avif",
+      "/saftey-shop/images/mask/6200-3m-3.avif",
+      "/saftey-shop/images/mask/6200-3m-4.avif"
+    ],
+    "sizes": ["کوچک", "متوسط", "بزرگ"],
+    "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
+  
+
   }
 ]

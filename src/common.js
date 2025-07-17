@@ -13,7 +13,14 @@ export function slugify(text) {
 }
 
 export async function fetchProducts() {
-  const response = await fetch('/saftey-shop/products.json');
-  const data = await response.json();
-  return data;
+  try {
+const basePath = import.meta.env.BASE_URL || '/';
+const res = await fetch(`${basePath}data/products.json`);
+    if (!res.ok) throw new Error('Failed to load products');
+    const products = await res.json();
+    return products;
+  } catch (err) {
+    console.error('❌ خطا در بارگیری محصولات:', err);
+    return [];
+  }
 }

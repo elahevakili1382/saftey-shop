@@ -1,89 +1,81 @@
-// فایل: cart.js
-import { getCart, saveCart } from './storage.js';
+import { getCart, clearCart } from './storage.js';
+import { faToEnDigits, updateCartCount } from './cartCount.js';
 
 const cartContainer = document.getElementById('cart-container');
-const totalContainer = document.getElementById('total');
-const clearCartBtn = document.getElementById('clear-cart');
+const totalPriceEl = document.getElementById('total-price');
+const totalItemsEl = document.getElementById('total-items');
+const clearBtn = document.getElementById('clear-cart');
 
-function renderCart() {
+function renderCartTable() {
   const cart = getCart();
   cartContainer.innerHTML = '';
 
-  if (cart.length === 0) {
+  if (!cart.length) {
     cartContainer.innerHTML = `
-      <p class="col-span-full text-center text-gray-500 text-xl">سبد خرید شما خالی است.</p>
-    `;
-    totalContainer.textContent = '';
+      <tr>
+        <td colspan="6" class="text-center py-4 text-gray-500">سبد خرید شما خالی است.</td>
+      </tr>`;
+    updateTotal();
+    updateCartCount();
     return;
   }
 
-  let totalPrice = 0;
-  let totalCount = 0;
+  cart.forEach(item => {
+   const price = Number(faToEnDigits(String(item.price))) || 0;
+const quantity = Number(faToEnDigits(String(item.quantity))) || 0;
 
-  cart.forEach((item) => {
-    totalPrice += item.price * item.quantity;
-    totalCount += item.quantity;
 
-    const card = document.createElement('div');
-    card.className = `
-      bg-white w-full min-h-[460px] flex flex-col justify-between rounded-xl shadow-md
-      hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer group border border-orange-400
-      hover:border-orange-600
-    `;
-
-    card.innerHTML = `
-      <div class="overflow-hidden rounded-t-xl">
-        <img src="${item.image}" class="w-full aspect-[4/3] object-contain transform group-hover:scale-105 transition duration-300" alt="${item.title}">
-      </div>
-      <div class="flex flex-col items-start px-5 py-4">
-        <h3 class="text-lg font-bold text-orange-700 mb-1">${item.title}</h3>
-        <p class="text-gray-700 mb-3">${item.price.toLocaleString()} تومان</p>
-
-        <div class="flex items-center gap-2 mb-3">
-          <button data-id="${item.id}" data-action="decrease" class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300">➖</button>
-          <span class="text-sm font-bold text-black">${item.quantity}</span>
-          <button data-id="${item.id}" data-action="increase" class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300">➕</button>
-        </div>
-
-        <button data-id="${item.id}" data-action="remove" class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition">
-          🗑 حذف
+    const row = document.createElement('tr');
+    row.className = 'border-b hover:bg-gray-50';
+    row.innerHTML = `
+      <td class="px-4 py-3">
+        <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded" />
+      </td>
+      <td class="px-4 py-3">${item.title}</td>
+      <td class="px-4 py-3">${price.toLocaleString('fa-IR')} تومان</td>
+      <td class="px-4 py-3">${quantity.toLocaleString('fa-IR')}</td>
+      <td class="px-4 py-3 text-orange-600 font-bold">${(price * quantity).toLocaleString('fa-IR')} تومان</td>
+      <td class="px-4 py-3">
+        <button class="remove-btn w-full bg-orange-500 text-white hover:border-2 border-orange-700 hover:bg-slate-50 hover:text-orange-700 py-2 rounded-lg text-sm transition mt-2" data-id="${item.id}">
+         <i class="fa-solid fa-trash"></i>
         </button>
-      </div>
-    `;
+      </td>`;
 
-    cartContainer.appendChild(card);
+    row.querySelector('.remove-btn').addEventListener('click', () => removeItemFromCart(item.id));
+    cartContainer.appendChild(row);
   });
 
-  totalContainer.textContent = `مجموع: ${totalPrice.toLocaleString()} تومان (${totalCount} عدد)`;
+  updateTotal();
+  updateCartCount();
 }
 
-cartContainer.addEventListener('click', (e) => {
-  const btn = e.target.closest('button[data-id]');
-  if (!btn) return;
+function removeItemFromCart(productId) {
+  const updatedCart = getCart().filter(item => item.id !== productId);
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
+  renderCartTable();
+}
 
-  const id = btn.dataset.id;
-  const action = btn.dataset.action;
-  let cart = getCart();
-  const index = cart.findIndex((p) => p.id == id);
+function updateTotal() {
+  if (!totalPriceEl || !totalItemsEl) return;
+  const cart = getCart();
 
-  if (index === -1) return;
+  const total = cart.reduce((sum, item) => {
+    const price = Number(faToEnDigits(item.price)) || 0;
+    const quantity = Number(faToEnDigits(item.quantity)) || 0;
+    return sum + price * quantity;
+  }, 0);
 
-  if (action === 'increase') {
-    cart[index].quantity++;
-  } else if (action === 'decrease') {
-    cart[index].quantity--;
-    if (cart[index].quantity <= 0) cart.splice(index, 1);
-  } else if (action === 'remove') {
-    cart.splice(index, 1);
-  }
+  const totalItems = cart.reduce((sum, item) => sum + (Number(faToEnDigits(item.quantity)) || 0), 0);
 
-  saveCart(cart);
-  renderCart();
+  totalPriceEl.textContent = `${total.toLocaleString('fa-IR')} تومان`;
+  totalItemsEl.textContent = totalItems.toLocaleString('fa-IR');
+}
+
+clearBtn.addEventListener('click', () => {
+  clearCart();
+  renderCartTable();
 });
 
-clearCartBtn.addEventListener('click', () => {
-  localStorage.removeItem('shopping_cart');
-  renderCart();
+document.addEventListener('DOMContentLoaded', () => {
+  renderCartTable();
 });
-
-renderCart();

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>لیست محصولات</title>
+
+  <!-- استایل اصلی پروژه -->
+  <link rel="stylesheet" href="/css/styles.css" />
+
+  <!-- فونت Vazirmatn از گوگل -->
+
+  <style>
+    @font-face {
+  font-family: 'Vazir';
+  src: url('/saftey-shop/fonts/Vazir.woff') format('woff');
+}
+
+  body {
+    font-family: 'Vazir', sans-serif;
+  }
+  .rtl {
+    direction: rtl;
+  }
+  
+
+  </style>
+</head>
+
+<body class=" text-gray-900">
+
+<header class="sticky top-0 z-50 h-[40px] w-full mt-5 bg-white">
+  <div class="flex items-center justify-between h-full mx-5">
+    <div class="text-orange-500 text-2xl font-bold">سیفتی مارکت</div>
+    <!-- search -->
+    <div class="hidden md:flex w-full max-w-md relative items-center">
+      <input
+        type="text"
+        placeholder="...جست وجو "
+        class="w-full rounded-r-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+      />
+      <i class="fas fa-search px-3 absolute left-3 top-1/2 -translate-y-1/2 text-black pointer-events-none"></i>
+    </div>
+    <div class="flex items-center gap-4 text-gray-600 text-xl">
+      <a href="login.html">
+              <i class="fas fa-user hover:text-orange-500 transition cursor-pointer" title="حساب کاربری "></i>
+
+      </a>
+      <a href="cart.html" class="relative">
+        <i class="fas fa-shopping-cart hover:text-orange-500 transition cursor-pointer" title="سبد خرید"></i>
+        <span id="cartCount" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full hidden">0</span>
+      </a>
+
+      <!--mobile menu icon -->
+      <div class="flex flex-row-reverse md:hidden">
+        <button id="mobileMenuBtn" class="text-2xl text-orange-500 focus:outline-none z-50" aria-label="باز کردن منو">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop menu -->
+  <nav class="hidden md:block w-full py-2 bg-orange-500 my-3 px-3">
+    <ul id="navItems" class="md:flex justify-center w-full gap-8 items-center text-sm font-semibold text-white"></ul>
+  </nav>
+
+  <!-- mobile Menu overlay -->
+  <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden hidden"></div>
+  
+  <!-- mobile menu sidebar -->
+  <aside id="mobileMenu" class="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white shadow-lg z-50 overflow-y-auto transition-transform duration-300 md:hidden translate-x-full">
+    <div class="flex justify-between items-center px-4 py-4 border-b">
+      <span class="font-bold text-orange-600 text-lg">منو </span>
+      <button id="closeMobileMenu" aria-label="بستن ">
+        <i class="fas fa-times text-xl text-orange-600"></i>
+      </button>
+    </div>
+    <ul id="mobileNavItems" class="flex flex-col gap-4 text-base font-semibold px-4 py-6 text-orange-800"></ul>
+  </aside>
+</header>
+
+
+
+
+  <main class="max-w-screen-xl mx-auto p-4">
+    <div
+      class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 mt-6"
+    >
+      <span  id="categoryTitle"
+        class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2 mt-6"
+      >
+        محصولات دسته بندی شده 
+      </span>
+    </div>
+
+
+    <div id="product-list" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- کارت‌های محصول اینجا اضافه می‌شن -->
+    </div>
+  </main>
+
+    
+  <footer class="bg-gray-100 text-gray-800 py-10 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      
+      <!-- موقعیت مکانی -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">موقعیت مکانی</h3>
+        <a href="#" class="flex items-center gap-2 text-sm hover:text-orange-500">
+          <i class="fas fa-map-marker-alt"></i>
+          ایران، تهران، میدان حسن‌آباد، خیابان امام خمینی
+        </a>
+      </div>
+
+      <!-- دسترسی سریع -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">دسترسی سریع</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> خانه</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> محصولات بروز</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> کلاه ایمنی</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> نظرات کاربران</a></li>
+        </ul>
+      </div>
+
+      <!-- لینک خارجی -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">لینک خارجی</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> اطلاعات تماس</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> سفارش‌ها</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> حفظ حریم خصوصی</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> روش‌های پرداخت</a></li>
+          <li><a href="#" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-arrow-left"></i> خدمات ما</a></li>
+        </ul>
+      </div>
+
+      <!-- اطلاعات تماس -->
+      <div>
+        <h3 class="text-xl font-bold mb-4">اطلاعات تماس</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="tel:09106419678" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-phone"></i> 09106419678</a></li>
+          <li><a href="mailto:elahevakili8@gmail.com" class="flex items-center gap-2 hover:text-orange-500"><i class="fas fa-envelope"></i> elahevakili8@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- آیکون شبکه‌های اجتماعی -->
+    <div class="flex justify-center gap-4 mt-8 text-xl">
+      <a href="#" class="hover:text-orange-500"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="hover:text-orange-500"><i class="fab fa-telegram"></i></a>
+      <a href="#" class="hover:text-orange-500"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <!-- اعتبار -->
+    <div class="text-center mt-6 text-sm text-gray-500">
+      ساخته شده توسط <span class="text-orange-500 font-semibold">Elahe Vakili</span> | تمامی حقوق محفوظ است
+    </div>
+  </footer>
+
+  <!-- اسکریپت ماژول مربوط به نمایش محصولات دسته‌بندی -->
+  <script type="module" src="/src/category.js" defer></script>
+  <script type="module" src="/src/main.js" defer></script>
+<script type="module" src="/src/cartCount.js" defer></script>
+</body>
+</html>

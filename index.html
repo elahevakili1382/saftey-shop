@@ -4,18 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>سیفتی مارکت | فروشگاه تجهیزات ایمنی</title>
+    <link rel="stylesheet" href="/css/styles.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-<!-- <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
- -->
+
 
 <style>
     @font-face {
       font-family: 'Vazir';
-src: url('/saftey-shop/fonts/Vazir.woff');
+     src: url('/saftey-shop/fonts/Vazir.woff');
       font-weight: normal;
       font-style: normal;
     }
@@ -42,10 +38,36 @@ src: url('/saftey-shop/fonts/Vazir.woff');
     }
   }
 
+   .swiper {
+      width: 100%;
+      padding-bottom: 2.5rem; /* برای pagination */
+    }
+    .product-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 20px rgb(0 0 0 / 0.15);
+    }
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
 
 </style>
 
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
+<!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" /> -->
 </head>
 <body class="bg-white rtl">
 
@@ -127,6 +149,20 @@ src: url('/saftey-shop/fonts/Vazir.woff');
           >
             مشاهده محصولات
           </button>
+          
+          
+          <a href="product-category.html" class="text-white bg-orange-500 hover:bg-orange-600 text-base sm:text-lg py-2 sm:py-3 px-4 sm:px-6 m-3 rounded-3xl transition"
+>
+                        دکمه ی تستی برای مشاهده ی محصولات دسته بندی  
+
+          </a>
+
+           <a href="product-detail.html" class="text-white bg-orange-500 hover:bg-orange-600 text-base sm:text-lg py-2 sm:py-3 px-4 sm:px-6 m-3 rounded-3xl transition"
+>
+                      دکمه ی تست دیتیل محصولات 
+
+          </a>
+          
         </div>
       </div>
       <!-- در صورت نیاز، اسلایدهای بیشتری اضافه کن -->
@@ -152,7 +188,7 @@ src: url('/saftey-shop/fonts/Vazir.woff');
     <!-- محصولات -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-16">
       <div
-        id="product-grid"
+        id="latestProducts"
         class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8"
       ></div>
       <br>
@@ -195,26 +231,30 @@ src: url('/saftey-shop/fonts/Vazir.woff');
 
 
 
-  <section class="py-12 px-4">
-    <!-- عنوان -->
-    <div class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 m-5">
-      <span class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2">
-        محصولات پر فروش
-      </span>
-    </div>
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <!-- عنوان -->
+  <div
+    class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 mx-5"
+  >
+    <span
+      class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2"
+    >
+      محصولات پرفروش
+    </span>
+  </div>
 
-    <!-- ردیف اول -->
-    <div class="swiper mySwiper mb-8">
-      <div class="swiper-wrapper" id="first-row"></div>
-      <div class="swiper-pagination"></div>
-    </div>
+  <!-- ردیف اول -->
+  <div class="swiper swiper1 mb-8">
+    <div class="swiper-wrapper" id="first-row"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 
-    <!-- ردیف دوم -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper" id="second-row"></div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
+  <!-- ردیف دوم -->
+  <div class="swiper swiper2">
+    <div class="swiper-wrapper" id="second-row"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
 
   <!-- reviews -->
 
@@ -299,7 +339,9 @@ src: url('/saftey-shop/fonts/Vazir.woff');
 
 
 
-<script type="module" src="./src/main.js" defer></script>
+<script type="module" src="/src/main.js" defer></script>
+<script type="module" src="/src/cartCount.js" defer></script>
+
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
 
