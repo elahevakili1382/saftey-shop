@@ -2,16 +2,18 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
-  content: [
-    "./index.html",               // فایل اصلی HTML در ریشه
-    "./src/**/*.{js,ts,jsx,tsx}", // اسکریپت‌ها داخل src
-    "./css/**/*.{html,js}"        // در صورت نیاز بررسی فایل‌های HTML/JS داخل پوشه CSS
-  ],
+content: [
+  "./index.html",
+  "./contact.html",          // ← این رو اضافه کن اگه فایل خارج از src هست
+  "./src/**/*.{js,ts,jsx,tsx}",
+  "./**/*.html",             // ← همه فایل‌های HTML در پروژه
+],
 theme: {
     extend: {
       fontFamily: {
         iran: ['IranSans', ...defaultTheme.fontFamily.sans],
-      },
+      }
+     
     },
   },
   plugins: [],

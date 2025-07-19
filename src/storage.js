@@ -1,4 +1,5 @@
 // storage.js
+import { faToEnDigits } from "./cartCount";
 export function getCart() {
   return JSON.parse(localStorage.getItem('cart') || '[]');
 }

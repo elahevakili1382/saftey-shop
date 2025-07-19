@@ -87,7 +87,7 @@ const navItems = [
   {
     name: 'contact',
     label: 'تماس با ما',
-    to: '/contact'
+    to: '/contact.html'
   }
 ];
 
@@ -107,7 +107,7 @@ function renderDesktopMenu() {
       span.textContent = item.label;
 
       const submenu = document.createElement('ul');
-      submenu.className = 'absolute right-0 mt-2 hidden group-hover:flex flex-col bg-white text-base text-orange-700 shadow-md w-48 border border-orange-800 z-40';
+      submenu.className = 'absolute right-0 top-full hidden group-hover:flex flex-col bg-white text-base text-orange-700 shadow-md w-48 border border-orange-800 z-40';
 
       item.links.forEach(link => {
         const subLi = document.createElement('li');
@@ -414,3 +414,4 @@ async function loadReviews() {
   });
 });
 
+//جزئیات محصولات product-detail 
