@@ -1,39 +1,48 @@
-import { addToCart } from './storage.js';
-import { getCart } from './storage.js';
+import { addToCart, getCart } from './storage.js';
 import { updateCartCount } from './cartCount.js';
 
-const mainImage = document.querySelector('.main-product-image');
-const thumbnails = document.querySelectorAll('.thumbnail-image');
+document.addEventListener('DOMContentLoaded', () => {
+  const productData = localStorage.getItem('selectedProduct');
+  if (!productData) return;
 
-thumbnails.forEach(thumbnail => {
-  thumbnail.addEventListener('click', () => {
-    mainImage.src = thumbnail.src;
+  const product = JSON.parse(productData);
+
+  // نمایش اطلاعات محصول در صفحه
+  document.getElementById('productTitle').textContent = product.title;
+  document.getElementById('productPrice').textContent = `${(+product.price).toLocaleString()} تومان`;
+  document.getElementById('mainImage').src = product.image;
+
+  // تغییر تصویر اصلی با کلیک روی تصاویر کوچک
+  document.querySelectorAll('.thumbnail-image').forEach(thumbnail => {
+    thumbnail.addEventListener('click', () => {
+      document.getElementById('mainImage').src = thumbnail.src;
+    });
+  });
+
+  // افزودن به سبد خرید
+  document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+    const quantity = parseInt(document.querySelector('input[type="number"]').value) || 1;
+
+    const cartProduct = {
+      id: product.id,
+      title: product.title,
+      price: +product.price,
+      image: product.image,
+      quantity,
+    };
+
+    const cart = getCart();
+    const existingItem = cart.find(item => item.id === cartProduct.id);
+
+    if (existingItem) {
+      existingItem.quantity += cartProduct.quantity;
+    } else {
+      cart.push(cartProduct);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+
+    alert(`✅ «${product.title}» به سبد خرید اضافه شد`);
   });
 });
-
-document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-  const product = {
-    id: 'mask-6200',
-    title: 'ماسک نیم صورت تک فیلتر 6200',
-    price: '2300000',
-    quantity: parseInt(document.querySelector('input[type="number"]').value) || 1,
-    image: 'images/mask/6200-1.avif',
-  };
-
-  add(product);
-});
-
-function add(product) {
-  const cart = getCart();
-  const existingItem = cart.find(item => item.id === product.id);
-
-  if (existingItem) {
-    existingItem.quantity += product.quantity;
-  } else {
-    cart.push(product);
-  }
-
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartCount();
-  alert('✅ محصول به سبد خرید اضافه شد');
-}

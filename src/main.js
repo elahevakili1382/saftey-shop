@@ -1,13 +1,36 @@
+import { Navigation, Autoplay } from 'swiper/modules';
+
 import '../css/styles.css';
 import '../css/output.css';
-import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
+// import Swiper from 'swiper';
+// import 'swiper/swiper-bundle.css';
+// import 'swiper/css/navigation';
+// import { Navigation, Autoplay } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'primeicons/primeicons.css';
-
+import Swiper from 'swiper';
+import { MotionConfig } from 'framer-motion';
 import { addToCart } from './storage.js';
 import { createProductCard } from './productCard.js';
 import { updateCartCount } from './cartCount.js';
+import { showToast } from './toast.js';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init({
+  duration: 700,
+  offset: 120,
+  once: true,
+});
+
+
+
+Swiper.use([Navigation, Autoplay]);
+
 
 function slugify(text) {
   return text.toString()
@@ -107,13 +130,13 @@ function renderDesktopMenu() {
       span.textContent = item.label;
 
       const submenu = document.createElement('ul');
-      submenu.className = 'absolute right-0 top-full hidden group-hover:flex flex-col bg-white text-base text-orange-700 shadow-md w-48 border border-orange-800 z-40';
+      submenu.className = 'absolute right-0 top-full hidden group-hover:flex flex-col bg-white text-base text-orange-700 shadow-lg w-48 z-40 rounded-md';
 
       item.links.forEach(link => {
         const subLi = document.createElement('li');
         const a = document.createElement('a');
         a.href = link.to;
-        a.className = 'block px-4 py-2 hover:bg-orange-600 hover:text-white';
+        a.className = 'block px-4 py-2 hover:bg-orange-600 hover:text-white rounded-md';
         a.textContent = link.name;
         subLi.appendChild(a);
         submenu.appendChild(subLi);
@@ -199,9 +222,11 @@ function toggleMobileMenu(show) {
 document.addEventListener('DOMContentLoaded', () => {
   renderDesktopMenu();
   renderMobileMenu();
-  updateCartCount();
+updateCartCount();
     loadLatestProducts();
     loadBestSellingProducts();
+    brands();
+    loadReviews();
 
 
 
@@ -227,6 +252,8 @@ async function loadLatestProducts() {
     latestProducts.forEach(product => {
       const card = createProductCard(product);
       container.appendChild(card);
+      AOS.refresh(); // ✅ بعد از افزودن کارت‌ها
+
     });
 
   } catch (err) {
@@ -252,29 +279,86 @@ async function loadLatestProducts() {
     const midpoint = Math.ceil(products.length / 2);
     const firstRowProducts = products.slice(0, midpoint);
     const secondRowProducts = products.slice(midpoint);
+function createProductCard(product) {
+  const div = document.createElement('div');
+  div.classList.add('swiper-slide');
 
-    function createProductCard(product) {
-      const div = document.createElement('div');
-      div.classList.add('swiper-slide');
-      div.innerHTML = `
-        <div class="bg-white shadow border p-4 text-center rounded-lg">
-          <div class="aspect-square mb-4 overflow-hidden rounded-lg max-h-64 mx-auto">
-            <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover" />
-          </div>
-          <h3 class="text-lg font-semibold mb-2">${product.title}</h3>
-          <p class="text-orange-600 font-bold">${product.price.toLocaleString('fa-IR')} تومان</p>
-          <div class="text-yellow-400 mt-2">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-        </div>
-      `;
-      return div;
-    }
+  div.innerHTML = `
+    <div class="relative group w-64 sm:w-full max-w-sm bg-white border border-gray-200 shadow-md 
+  p-4 text-center transition-transform duration-300 hover:scale-105 overflow-hidden mx-auto">
+      <div class="aspect-square mb-4 overflow-hidden rounded-lg max-h-64 mx-auto">
+  <img 
+    src="${product.image}" 
+    alt="${product.title}" 
+    class="w-[55%] h-60 md:w-full md:h-full object-contain mx-auto"
+  />
+</div>
 
+      <h3 class="text-lg font-semibold mb-2">${product.title}</h3>
+      <p class="text-orange-600 font-bold">${product.price.toLocaleString('fa-IR')} تومان</p>
+      <div class="text-yellow-400 mt-2">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star-half-alt"></i>
+      </div>
+
+      <!-- نوار پایین کارت -->
+      <div class="absolute bottom-0 left-0 w-full bg-orange-100 text-orange-700 flex justify-center gap-6 py-4
+                  translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+        <a href="#" title="افزودن به سبد خرید"
+           class="add-to-cart-icon"
+           data-id="${product.id}"
+           data-title="${product.title}"
+           data-price="${product.price}"
+           data-image="${product.image}">
+          <i class="fas fa-shopping-cart text-xl hover:text-orange-500 transition-colors"></i>
+        </a>
+        <a href="login.html" title="ورود / ثبت نام">
+          <i class="fas fa-user text-xl hover:text-orange-500 transition-colors"></i>
+        </a>
+      </div>
+    </div>
+  `;
+
+  // ✅ وصل کردن ایونت کلیک به آیکون
+  const cartIcon = div.querySelector('.add-to-cart-icon');
+  if (cartIcon) {
+    cartIcon.addEventListener('click', (e) => {
+      e.preventDefault(); // نذار لینک بزنه به cart.html
+
+      const productData = {
+        id: cartIcon.dataset.id,
+        title: cartIcon.dataset.title,
+        price: cartIcon.dataset.price,
+        quantity: 1,
+        image: cartIcon.dataset.image,
+      };
+
+      addToCart(productData);
+      updateCartCount();
+
+      // اگه toast داری:
+      if (typeof showToast === 'function') {
+        showToast(`✅ «${productData.title}» به سبد خرید اضافه شد`);
+      }
+    });
+  }
+// وقتی کل کارت کلیک شد (به جز دکمه سبد خرید)
+div.addEventListener('click', (e) => {
+  const isCartBtn = e.target.closest('.add-to-cart-icon');
+  if (isCartBtn) return; // اگه رو دکمه سبد خرید زد، نره به detail
+
+  // ذخیره اطلاعات محصول
+  localStorage.setItem('selectedProduct', JSON.stringify(product));
+
+  // رفتن به صفحه جزییات محصول
+  window.location.href = 'product-detail.html';
+});
+
+  return div;
+}
     firstRowContainer.innerHTML = '';
     secondRowContainer.innerHTML = '';
 
@@ -294,6 +378,9 @@ async function loadLatestProducts() {
 
     // تنظیمات swiper
     const swiperOptions = {
+       loop: true,
+    grabCursor: true,
+    simulateTouch: true,
       slidesPerView: 3,
       spaceBetween: 24,
       loop: true,
@@ -302,10 +389,20 @@ async function loadLatestProducts() {
         clickable: true,
       },
       breakpoints: {
-        0: { slidesPerView: 1 },
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      }
+         0: { slidesPerView: 1.5, spaceBetween: 16 },       // موبایل
+    480: { slidesPerView: 2, spaceBetween: 16 },       // موبایل بزرگ
+    768: { slidesPerView: 2.5, spaceBetween: 20 },     // تبلت
+    1024: { slidesPerView: 3, spaceBetween: 24 },  
+      },
+      navigation: {
+      nextEl: '.brand-swiper-next',
+      prevEl: '.brand-swiper-prev',
+    },
+
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
     };
 
     // باید تو HTML کلاس ها این باشن
@@ -318,58 +415,100 @@ async function loadLatestProducts() {
 }
 
 //نظرات 
-//نظرات 
 async function loadReviews() {
   try {
-    const basePath = import.meta.env.BASE_URL || '/';  // مسیر پایه پروژه
+    const basePath = import.meta.env.BASE_URL || '/';
     const res = await fetch(`${basePath}data/reviews.json`);
-    if (!res.ok) throw new Error('خطا در دریافت نظرات');
+    if (!res.ok) throw new Error('خطا در دریافت نظرات کاربران');
 
     const reviews = await res.json();
-    const wrapper = document.getElementById('reviews-wrapper');
-    if (!wrapper) return;
+    const reviewsWrapper = document.getElementById('reviews-wrapper');
+    if (!reviewsWrapper) return;
 
-    wrapper.innerHTML = ''; // خالی کردن قبلی
+    reviewsWrapper.innerHTML = '';
 
     reviews.forEach(review => {
       const slide = document.createElement('div');
-      slide.classList.add('swiper-slide', 'p-6', 'bg-white', 'rounded-lg', 'shadow-md');
+      slide.className = 'swiper-slide p-4';
 
       slide.innerHTML = `
-        <p class="text-gray-700 mb-4">"${review.text}"</p>
-        <div class="flex items-center space-x-4">
-          <img src="${review.avatar}" alt="${review.name}" class="w-12 h-12 rounded-full object-cover" />
-          <div>
-            <h4 class="font-semibold">${review.name}</h4>
-            <p class="text-sm text-gray-500">${review.date}</p>
-          </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-md transition duration-300 text-center border border-gray-200">
+          <img src="${review.image}" alt="${review.name}" class="w-16 h-16 rounded-full mx-auto mb-4 object-cover border-2 border-orange-400" />
+          <p class="text-gray-600 text-sm mb-3 leading-relaxed">"${review.text}"</p>
+          <h4 class="text-md font-semibold text-gray-800">${review.name}</h4>
         </div>
       `;
 
-      wrapper.appendChild(slide);
+      reviewsWrapper.appendChild(slide);
     });
 
-    new Swiper('.mySwiper', {
+    // فعال‌سازی اسلایدر
+    new Swiper('.review-swiper', {
+    loop: true,
+    grabCursor: true,
+    simulateTouch: true,
       slidesPerView: 1,
       spaceBetween: 20,
       loop: true,
+      grabCursor: true,
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
       },
       breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
+        640: { slidesPerView: 1.5 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 2.5 },
       },
+        navigation: {
+      nextEl: '.reviews-swiper-nex',
+      prevEl: '.reviews-swiper-pre',
+    },
+
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
     });
 
-  } catch (error) {
-    console.error('خطا در بارگذاری نظرات:', error);
+  } catch (err) {
+    console.error('❌ خطا در بارگذاری نظرات:', err);
   }
 }
 
 
+// برند ها
+async function brands () {
+  const brandSwiper = new Swiper('.brandSwiper', {
+    loop: true,
+    grabCursor: true,
+    simulateTouch: true,
+    slidesPerView: 2,
+    spaceBetween: 20,
 
+    breakpoints: {
+      640: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 4,
+      },
+      1024: {
+        slidesPerView: 5,
+      },
+    },
+
+    navigation: {
+      nextEl: '.brand-swiper-nex',
+      prevEl: '.brand-swiper-pre',
+    },
+
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+  });
+}
 
 
   // بنر امکانات
@@ -385,11 +524,11 @@ async function loadReviews() {
     featuresContainer.innerHTML = '';
     features.forEach(f => {
       const div = document.createElement('div');
-      div.className = 'flex flex-col items-center p-4 text-center gap-2';
+div.className = 'flex flex-col justify-center items-center text-center gap-2 h-full';
 
       div.innerHTML = `
-        <span class="text-5xl text-orange-600"><i class="${f.icon}"></i></span>
-        <h3 class="text-lg font-semibold text-orange-600">${f.title}</h3>
+        <span class="text-5xl text-orange-700"><i class="${f.icon}"></i></span>
+        <h3 class="text-lg font-semibold text-orange-800">${f.title}</h3>
         <p class="text-gray-500">${f.subtitle}</p>
       `;
 
@@ -414,4 +553,4 @@ async function loadReviews() {
   });
 });
 
-//جزئیات محصولات product-detail 
+// ملزومات

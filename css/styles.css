@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import 'primeicons/primeicons.css';
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+
+
 
   @font-face {
       font-family: 'Vazir';
@@ -13,6 +17,61 @@
   body {
     font-family: 'Vazir', sans-serif;
   }
+  html {
+  overflow-y: scroll;
+}
+
   /* .rtl {
     direction: rtl;
   } */
+
+  
+@layer utilities {
+  @keyframes customFadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-fade-in {
+    animation: slideFadeIn 0.8s ease-in-out both;
+  }
+
+  .animate-slide-fade-in-bg {
+    animation: slideFadeIn 1s ease-out both;
+  }
+
+  .animate-fade-up {
+    animation: customFadeUp 1s ease-out both;
+  }
+  
+}
+
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+

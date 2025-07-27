@@ -41,7 +41,7 @@
 
   {
      "id":3,
-    "image": "/saftey-shop/images/mostsale/headlamp.webp",
+    "image": "/saftey-shop/images/flashlight.png",
     "title": "چراغ قوه ",
     "price": "۱۸۰۰۰۰",
       "category": "تجهیزات آتش نشانی ",
@@ -157,7 +157,7 @@
   },
   {
      "id":9,
-    "image": "/saftey-shop/images/mostsale/edge-personal-fall-limiter.jpg",
+    "image": "/saftey-shop/images/tools.jpg",
     "title": "ابزار ",
     "price": "۱۵۰۰۰۰",
           "category": " تجهیزات کار در ارتفاع ",

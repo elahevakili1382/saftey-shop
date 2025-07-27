@@ -1,74 +1,39 @@
-// فایل: auth.js
-
-function saveUser(user) {
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-  users.push(user);
-  localStorage.setItem("users", JSON.stringify(users));
-}
-
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function validatePassword(password) {
-  return password.length >= 6;
-}
-
-function showToast(msg) {
-  alert(msg); // قابل جایگزینی با UI بهتر
-}
-
-// تب‌ها
-const loginTab = document.getElementById("loginTab");
-const registerTab = document.getElementById("registerTab");
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-
-loginTab.addEventListener("click", () => {
-  loginTab.classList.add("text-orange-600", "font-bold", "border-b-2", "border-orange-500");
-  registerTab.classList.remove("text-orange-600", "font-bold", "border-b-2", "border-orange-500");
-  loginForm.classList.remove("hidden");
-  registerForm.classList.add("hidden");
-});
-
-registerTab.addEventListener("click", () => {
-  registerTab.classList.add("text-orange-600", "font-bold", "border-b-2", "border-orange-500");
-  loginTab.classList.remove("text-orange-600", "font-bold", "border-b-2", "border-orange-500");
-  registerForm.classList.remove("hidden");
-  loginForm.classList.add("hidden");
-});
-
-// ثبت‌نام
-registerForm.addEventListener("submit", (e) => {
+document.getElementById('loginForm')?.addEventListener('submit', async function (e) {
   e.preventDefault();
-  const name = document.getElementById("regName").value.trim();
-  const email = document.getElementById("regEmail").value.trim();
-  const password = document.getElementById("regPassword").value;
 
-  if (!validateEmail(email)) return showToast("ایمیل معتبر نیست.");
-  if (!validatePassword(password)) return showToast("رمز باید حداقل ۶ کاراکتر باشد.");
+  const username = document.getElementById('username').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
 
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-  if (users.find(u => u.email === email)) return showToast("کاربری با این ایمیل وجود دارد.");
+  if (!username || !email || !password) {
+    alert('لطفاً تمام فیلدها را پر کنید.');
+    return;
+  }
 
-  saveUser({ name, email, password });
-  showToast("ثبت‌نام موفق بود!");
-  registerForm.reset();
-});
+  try {
+    const response = await fetch('https://example.com/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, email, password })
+    });
 
-// ورود
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const email = document.getElementById("loginEmail").value.trim();
-  const password = document.getElementById("loginPassword").value;
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'ورود ناموفق بود');
+    }
 
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-  const user = users.find(u => u.email === email && u.password === password);
+    const data = await response.json();
 
-  if (!user) return showToast("اطلاعات ورود نادرست است.");
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user));
 
-  localStorage.setItem("loggedInUser", JSON.stringify(user));
-  showToast("ورود موفقیت‌آمیز بود!");
-  loginForm.reset();
-  // در صورت نیاز: location.href = "/dashboard.html";
+    alert('✅ ورود موفقیت‌آمیز بود');
+    window.location.href = '/dashboard.html'; // مسیر پنل کاربری
+
+  } catch (err) {
+    console.error('❌ خطا:', err.message);
+    alert(err.message || 'مشکلی در ورود به وجود آمده است.');
+  }
 });

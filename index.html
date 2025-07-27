@@ -15,9 +15,33 @@
       font-weight: normal;
       font-style: normal;
     }
-  body {
-    font-family: 'Vazir', sans-serif;
-  }
+    .section-safety {
+  background: url('/public/images/front-view-protective-glasses-with-hard-hat-headphones_23-2148773471.avif') center/cover no-repeat;
+  position: relative;
+}
+.section-safety::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+
+
+body, html {
+      font-family: 'Vazir', sans-serif;
+  /* margin: 0;
+  padding: 0; */
+  overflow-x: hidden;
+
+}
+html{
+    overflow-y: scroll; /* حتی وقتی محتوایی نیست که اسکرول شه */
+
+}
+
+
   .rtl {
     direction: rtl;
   }
@@ -67,9 +91,8 @@
 
 </style>
 
-<!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" /> -->
 </head>
-<body class="bg-white rtl">
+<body class="rtl overflow-x-hidden">
 <a href="https://wa.me/989123456789" target="_blank" 
    class="fixed bottom-5 right-5 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg 
           hover:bg-green-600 hover:scale-110 transition-transform transition-colors duration-300 ease-in-out
@@ -80,7 +103,8 @@
 
 
 
-<header class="sticky top-0 z-50 h-[40px] w-full mt-5 bg-white">
+
+<header class="fixed top-0 z-50 h-[60px] w-full bg-white">
   <div class="flex items-center justify-between h-full mx-5">
     <div class="text-orange-500 text-2xl font-bold">سیفتی مارکت</div>
     <!-- search -->
@@ -88,7 +112,7 @@
       <input
         type="text"
         placeholder="...جست وجو "
-        class="w-full rounded-r-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
+        class="w-full rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-400"
       />
       <i class="fas fa-search px-3 absolute left-3 top-1/2 -translate-y-1/2 text-black pointer-events-none"></i>
     </div>
@@ -127,45 +151,48 @@
         <i class="fas fa-times text-xl text-orange-600"></i>
       </button>
     </div>
-    <ul id="mobileNavItems" class="flex flex-col gap-4 text-base font-semibold px-4 py-6 text-orange-800"></ul>
+    <ul id="mobileNavItems" class="flex flex-col gap-4 text-base px-4 py-6 text-orange-800"></ul>
   </aside>
 </header>
 
-<!--  -->
 
-<!-- Carousel Section -->
-<div class="relative w-full h-[400px] md:h-[600px] overflow-hidden mt-5">
-  <!-- Swiper container -->
-  <div class="swiper h-full">
-    <div class="swiper-wrapper">
-      <!-- Slide 1 -->
-      <div class="swiper-slide relative">
-        <img
-          src="/images/firefighter-suits-hanging-from-wall-station.png"
-          class="w-full h-full object-cover"
-          style="object-position: top 30%"
-          alt="Slide Image"
-        />
-        <div
-          class="absolute inset-0 bg-black bg-opacity-40 flex flex-col text-white p-4"
-        >
-          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-right mt-6">
-            لوازم ایمنی و آتش نشانی مهدی
-          </h1>
-          
-          
-        </div>
-      </div>
-      <!-- در صورت نیاز، اسلایدهای بیشتری اضافه کن -->
-    </div>
+<!-- Hero banner -->
+<section class="w-full h-screen overflow-hidden flex flex-col md:flex-row bg-gray-50 pt-[100px]">
+  <!-- متن سمت چپ -->
+  <div class="flex flex-col justify-center items-start p-10 md:w-1/2 text-right">
+    <button class="rounded-full bg-white text-orange-700 hover:bg-orange-500 hover:text-white px-6 py-2 mb-3">
+      <i class="fa-solid fa-helmet-safety"></i> ایمن باش
+    </button>
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-relaxed animate-slide-fade-in-bg">
+      ایمنی را با ما تجربه کنید
+    </h1>
+    <p class="text-gray-600 text-lg mb-8 animate-slide-fade-in-bg">
+      بزرگترین فروشگاه تجهیزات ایمنی و حفاظت فردی با بهترین قیمت‌ها
+    </p>
+    <a href="#products" class="bg-orange-500 hover:bg-white border border-1-orange-600 text-white hover:text-orange-900 px-6 py-3 rounded-lg text-lg shadow animate-pulse">
+      مشاهده محصولات
+    </a>
   </div>
-</div>
+
+  <!-- تصویر سمت راست -->
+  <div class="relative flex justify-center items-end md:items-center container mx-auto px-4 mt-[-40px]">
+    <!-- تصویر لباس آتش‌نشانی -->
+    <img src="/public/images/firefighter-suits-hanging-from-wall-station.png"
+         alt=""
+         class="w-[500px] xl:w-[650px] relative z-10 drop-shadow animate-fade-up animate-slide-fade-in -mb-4 md:-mt-20" />
+
+    <!-- Blob -->
+    <img src="/public/images/banner/blob.svg"
+         alt=""
+         class="absolute top-0 left-[-80px] w-[900px] md:w-[1500px] max-w-full z-0 animate-fade-up animate-slide-fade-in block" />
+  </div>
+</section>
 
 <!-- feature banner -->
-  <div id="features" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl mt-10 max-w-6xl mx-auto mb-4"></div>
+  <div id="featuresContainer" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 p-4 sm:p-6 rounded-xl mt-10 max-w-6xl mx-auto mb-4" data-aos="fade-up" data-aos-delay="200"></div>
+
 
   <!-- محصولات بروز  -->
-    <!-- عنوان بخش -->
     <div
       class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 m-5"
     >
@@ -185,46 +212,118 @@
       <br>
     </div>
 
-    <!-- دو بخش ایمنی و آتش نشانی  -->
+<!-- ملزومات -->
 
+    <div class="relative flex w-full justify-center items-center py-8 px-4 bg-white overflow-hidden">
+  <div class="flex flex-col md:flex-row gap-6 w-full max-w-5xl text-white relative z-10">
+    
+    <!-- کارت اول -->
+  <div class="relative flex flex-col items-center justify-between bg-yellow-200 rounded-xl p-6 w-full md:w-1/2 overflow-hidden"   data-aos="fade-left"
+     data-aos-delay="200"
+     data-aos-duration="800">
+  <div class="absolute top-0 left-0 w-20 h-20">
+    <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="0" cy="0" r="20" stroke="#b32707" stroke-width="3" fill="none"/>
+      <circle cx="0" cy="0" r="35" stroke="#b32707" stroke-width="3" fill="none"/>
+      <circle cx="0" cy="0" r="50" stroke="#b32707" stroke-width="3" fill="none"/>
+    </svg>
+  </div>
+   <div class="absolute bottom-0 right-0 w-20 h-20">
+    <svg viewBox="0 0 100 100" class="w-full h-full rotate-180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="0" cy="0" r="20" stroke="#b32707" stroke-width="2" />
+      <circle cx="0" cy="0" r="35" stroke="#b32707" stroke-width="2" />
+      <circle cx="0" cy="0" r="50" stroke="#b32707" stroke-width="2" />
+    </svg>
+  </div>
 
-    <!-- فرم خبرنامه  -->
-  <div
-      class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10 m-5"
-    >
-      <span
-        class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2"
-      >
-       خبرنامه 
-      </span>
-    </div>
-    <section
-  class="newletter bg-fixed-desktop object-contain mt-16 py-10 px-4 sm:px-6 lg:px-16 text-center min-h-[350px] sm:min-h-[400px] md:min-h-[300px]"
->
-  <h2 class="text-2xl sm:text-3xl font-bold text-orange-700 mb-4">عضو خبرنامه شوید</h2>
-  <p>اولین نفری باشید که از تخفیف ها و محصولات جدید با خبر می شود</p>
-
-  <form id="newsletterForm" class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
-    <input
-      type="email"
-      id="emailInput"
-      required
-      placeholder="ایمیل شما"
-      class="w-full sm:w-2/3 px-4 py-2 rounded-lg border border-orange-300 focus:outline-none focus:ring-2 focus:ring-orange-400 transition"
-    />
+  <img src="/public/images/1000956731-removebg-preview.png" alt="ملزومات ایمنی" class="w-48 h-48 object-contain mb-4" />
+  <a href="firefighting-equipment.html">
     <button
-      type="submit"
-      class="px-6 py-2 bg-orange-700 text-white rounded-lg hover:bg-orange-700 transition"
-    >
-      عضویت
-    </button>
-  </form>
-</section>
+  class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-orange-900 rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-orange-500 focus:outline-offset-4 overflow-hidden"
+>
+  <span class="relative z-20">ملزومات آتش نشانی </span>
+
+  <span
+    class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+  ></span>
+
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#eca33d] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#efb96d] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#efb96d] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#efb96d] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+  ></span>
+</button>
+  </a>
+
+
+</div>
+
+    
+    <!-- کارت دوم -->
+<div class="relative flex flex-col items-center justify-between bg-orange-800 rounded-xl p-6 w-full md:w-1/2 overflow-hidden"   data-aos="fade-right"
+     data-aos-delay="400"
+     data-aos-duration="800">
+  <!-- نیم دایره گوشه بالا -->
+  <div class="absolute top-0 left-0 w-20 h-20">
+    <svg viewBox="0 0 100 100" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="0" cy="0" r="20" stroke="#fcc40d" stroke-width="3" fill="none"/>
+      <circle cx="0" cy="0" r="35" stroke="#fcc40d" stroke-width="3" fill="none"/>
+      <circle cx="0" cy="0" r="50" stroke="#fcc40d" stroke-width="3" fill="none"/>
+    </svg>
+  </div>  
+  
+   <div class="absolute bottom-0 right-0 w-20 h-20">
+    <svg viewBox="0 0 100 100" class="w-full h-full rotate-180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="0" cy="0" r="20" stroke="#fcc40d" stroke-width="2" />
+      <circle cx="0" cy="0" r="35" stroke="#fcc40d" stroke-width="2" />
+      <circle cx="0" cy="0" r="50" stroke="#fcc40d" stroke-width="2" />
+    </svg>
+  </div>
+  
+  <img src="/public/images/170-removebg-preview.png" alt="ملزومات ایمنی" class="w-48 h-48 object-contain mb-8" /> 
+  <a href="saftey-equipment.html">
+    <button
+  class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+>
+  <span class="relative z-20">ملزومات ایمنی </span>
+
+  <span
+    class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+  ></span>
+
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+  ></span>
+  <span
+    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+  ></span>
+</button>
+  </a>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 <!-- محصولات پر فروش  -->
-
-
-
 <section class="py-12 px-4 max-w-7xl mx-auto">
   <!-- عنوان -->
   <div
@@ -241,37 +340,193 @@
   <div class="swiper swiper1 mb-8">
     <div class="swiper-wrapper" id="first-row"></div>
     <div class="swiper-pagination"></div>
+    <!-- فلش‌ها -->
+        <div class="brand-swiper-prev absolute top-1/2 -translate-y-1/2 left-2 z-10 bg-white border border-gray-300 shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.707 15.707a1 1 0 01-1.414 0L6.586 11l4.707-4.707a1 1 0 111.414 1.414L9.414 11l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="brand-swiper-next absolute top-1/2 -translate-y-1/2 right-2 z-10 bg-white border border-gray-300 shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13.414 9l-4.707 4.707a1 1 0 01-1.414-1.414L10.586 9 7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
   </div>
 
   <!-- ردیف دوم -->
   <div class="swiper swiper2">
     <div class="swiper-wrapper" id="second-row"></div>
     <div class="swiper-pagination"></div>
+    <!-- فلش‌ها -->
+        <div class="brand-swiper-pre absolute top-1/2 -translate-y-1/2 left-2 z-10 bg-white border border-gray-300 shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.707 15.707a1 1 0 01-1.414 0L6.586 11l4.707-4.707a1 1 0 111.414 1.414L9.414 11l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="brand-swiper-nex absolute top-1/2 -translate-y-1/2 right-2 z-10 bg-white border border-gray-300 shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13.414 9l-4.707 4.707a1 1 0 01-1.414-1.414L10.586 9 7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
   </div>
 </section>
 
-  <!-- reviews -->
 
-  <section class="py-12 px-4" id="reviews">
-    <!-- عنوان -->
-    <div class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10">
-      <span class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block">
-        نظرات کاربران
-      </span>
-    </div>
+<!-- برند ها -->
+<section class="py-10 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">برندهای محبوب</h2>
 
-    <!-- اسلایدر -->
-    <div class="swiper mySwiper max-w-6xl mx-auto">
-      <div class="swiper-wrapper" id="reviews-wrapper">
-        <!-- اسلایدها به صورت داینامیک در JS ساخته می‌شن -->
+      <div class="relative w-full">
+        <div class="swiper brandSwiper px-8">
+          <div class="swiper-wrapper">
+
+            <!-- برندها -->
+            <div class="swiper-slide flex justify-center items-center">
+              <img src="/images/brands/3m.png" alt="3M" class="w-24 h-24 object-contain" />
+            </div>
+            <div class="swiper-slide flex justify-center items-center">
+              <img src="/images/brands/ct.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/250px-Logo_petzl.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/canasafe-min.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/canasafe-min.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/clan.jpg" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/drager.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/hellberg.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/images (1).png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/images (2).png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/images.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/New-Project-8-min.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/north.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+             <div class="swiper-slide flex justify-center items-center">
+              <img src="/public/images/brands/uvex.png" alt="CT" class="w-24 h-24 object-contain" />
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- فلش‌ها -->
+        <div class="brand-swiper-pre absolute top-1/2 -translate-y-1/2 left-2 z-10 bg-white border border-gray-300 shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.707 15.707a1 1 0 01-1.414 0L6.586 11l4.707-4.707a1 1 0 111.414 1.414L9.414 11l3.293 3.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="brand-swiper-nex absolute top-1/2 -translate-y-1/2 right-2 z-10 bg-white border border-gray-300 shadow-md w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition hover:bg-gray-100">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M7.293 4.293a1 1 0 011.414 0L13.414 9l-4.707 4.707a1 1 0 01-1.414-1.414L10.586 9 7.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+
       </div>
-      <div class="swiper-pagination mt-6"></div>
     </div>
   </section>
 
+  <!-- درباره ما  -->
+<!-- چرا سیفتی مارکت؟ -->
+<section class="section-safety py-16 relative text-white overflow-hidden">
+  <div class="relative z-10 max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+    <div class="md:w-1/2 flex flex-col space-y-6">
+      <h2 class="text-4xl md:text-5xl font-bold">چرا سیفتی مارکت؟</h2>
+ <p class="text-lg md:text-xl text-orange-100 leading-loose">
+        با بیش از ۱۵ سال تجربه در حوزه ایمنی و حفاظت فردی، فروشگاه سیفتی مارکت عرضه‌کننده مستقیم بهترین تجهیزات ایمنی از برندهای معتبر داخلی و خارجی به صورت تک و عمده است. ارسال سریع، پشتیبانی تخصصی و قیمت‌های رقابتی تنها بخشی از مزایای ما هستند.
+      </p>    </div>
+    <div class="md:w-1/2 grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <!-- کارت اول -->
+      <div class="flex flex-col items-center space-y-2">
+        <i class="fa-solid fa-calendar-check text-yellow-400 fa-3x animate-bounce"></i>
+        <h3 class="text-3xl font-bold counter" data-target="15">15</h3>
+        <p>سال تجربه</p>
+      </div>
+      <!-- کارت دوم -->
+      <div class="flex flex-col items-center space-y-2">
+        <i class="fa-solid fa-users text-yellow-400 fa-3x animate-bounce"></i>
+        <h3 class="text-3xl font-bold counter" data-target="1200">1000+</h3>
+        <p>مشتری راضی</p>
+      </div>
+      <!-- کارت سوم -->
+      <div class="flex flex-col items-center space-y-2">
+        <i class="fa-solid fa-boxes-stacked text-yellow-400 fa-3x animate-bounce"></i>
+        <h3 class="text-3xl font-bold counter" data-target="300">1500+</h3>
+        <p>محصول ایمنی</p>
+      </div>
+    </div>
+  </div>
+  <!-- موج پایین -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] rotate-180 z-0">
+    <svg class="relative block w-[calc(100%+1.3px)] h-[100px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,0 C300,100 900,0 1200,100 L1200,0 L0,0 Z" fill="#fff"></path>
+    </svg>
+  </div>
+</section>
 
-  
-  <footer class="bg-gray-100 text-gray-800 py-10 px-4">
+
+
+  <!-- reviews -->
+ <section class="py-12 px-4 bg-white" id="reviews">
+  <!-- عنوان -->
+  <div class="relative text-center mb-8 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10">
+    <span class="text-3xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block">
+      نظرات کاربران
+    </span>
+  </div>
+
+  <!-- اسلایدر -->
+   <div class="relative w-full">
+
+     <div class="swiper review-swiper max-w-4xl mx-auto">
+    <div class="swiper-wrapper" id="reviews-wrapper">
+      <!-- اسلایدها از جاوااسکریپت ساخته می‌شن -->
+    </div>
+    <div class="swiper-pagination mt-6"></div>
+    <div class="reviews-swiper-pre absolute top-1/2 left-0 -translate-y-1/2 z-10 bg-white shadow-md border border-gray-300 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </div>
+
+      <!-- نویگیشن راست -->
+      <div class="reviews-swiper-nex absolute top-1/2 right-0 -translate-y-1/2 z-10 bg-white shadow-md border border-gray-300 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-100 transition">
+        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+   </div>
+  </div>
+
+     
+ 
+</section> 
+
+
+
+
+  <footer class="bg-gray-100 text-gray-800 py-10 px-4"   data-aos="fade-up"
+     data-aos-delay="500"
+     data-aos-duration="800">
     <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
       
       <!-- موقعیت مکانی -->
@@ -335,13 +590,19 @@
     </div>
   </footer>
 
-
-
 <script type="module" src="/src/main.js" defer></script>
 <script type="module" src="/src/cartCount.js" defer></script>
 
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+<div id="toast"
+     class="fixed top-4 right-4 sm:right-6 md:right-10 lg:right-12 xl:right-16
+            w-[90%] sm:w-auto max-w-xs sm:max-w-md bg-orange-400 text-white
+            text-sm sm:text-base md:text-lg lg:text-xl py-2 px-4 sm:px-6
+            rounded-lg shadow-lg z-50 opacity-0 pointer-events-none
+            transition-opacity duration-300 ease-in-out text-center sm:text-right">
+  محصول با موفقیت به سبد خرید اضافه شد ✅
+</div>
+
 
 </body>
 </html>

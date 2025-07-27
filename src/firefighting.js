@@ -17,7 +17,7 @@ import { updateCartCount } from './cartCount.js';
     return;
   }
 
-  categoryTitleEl.textContent = 'همه محصولات'; // یا هر متن دلخواه
+  categoryTitleEl.textContent = 'ملزومات آتش نشانی ';
 
   products.forEach(product => {
     const card = createProductCard(product);
