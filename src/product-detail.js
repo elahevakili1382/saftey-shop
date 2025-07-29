@@ -1,7 +1,11 @@
 import { addToCart, getCart } from './storage.js';
 import { updateCartCount } from './cartCount.js';
+import { comment } from 'postcss';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const commentForm = document.getElementById('.commentForm');
+  const commentList = document.getElementById('.commentList');
+  const productId = JSON.parse(localStorage.getItem('selectedProduct'))?.id;
   const productData = localStorage.getItem('selectedProduct');
   if (!productData) return;
 
@@ -45,4 +49,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     alert(`✅ «${product.title}» به سبد خرید اضافه شد`);
   });
+
+  function loadComments(){
+    const comments = JSON.parse(localStorage.getItem(`comments-${productId}`)) || [ ];
+
+    comments.forEach(comment =>{
+      const commentEl = document.createElement('div');
+         commentEl.className = 'bg-gray-100 p-3 rounded shadow-sm';
+      commentEl.innerHTML = `
+        <p class="font-semibold text-sm text-orange-600">${comment.username}</p>
+        <p class="text-sm mt-1 text-gray-700">${comment.text}</p>
+      `;
+
+      commentList.appendChild(commentEl);
+    });
+  }
+
+  commentForm.addEventListener('submit', (e) =>{
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const commentText = document.getElementById('commentText').value.trim();
+
+    if(!username || !commentText) return;
+
+    const newComment = {username, text:commentText};
+
+    const existingComments = JSON.parse(localStorage.getItem(`comments-${productId}`)) || [];
+    existingComments.push(newComment);
+
+    localStorage.setItem(`comments-${productId}`, JSON.stringify(existingComments));
+
+    commentForm.reset();
+    loadComments()
+
+  });
+
+  loadComments();
+
 });

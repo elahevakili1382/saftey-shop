@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت سفارشات</title>
+  
+
+  <!-- تقویم شمسی -->
+  <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css" />
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js"></script>
+  <script src="https://unpkg.com/persian-date/dist/persian-date.min.js"></script>
+  <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+
+  <style>
+      @font-face {
+      font-family: 'Vazir';
+     src: url('/saftey-shop/fonts/Vazir.woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+  body {
+    font-family: 'Vazir', sans-serif;
+  }
+  </style>
+</head>
+<body class="bg-gray-100 p-4">
+
+     <div
+      class="relative text-center mb-3 before:content-[''] before:absolute before:top-1/2 before:left-0 before:-z-10 before:w-full before:h-px before:bg-black/10"
+    >
+      <span
+        class="text-2xl font-bold px-8 py-4 text-black bg-white border border-gray-300 inline-block mr-2"
+      >
+پنل مدیریت سفارشات       </span>
+    </div>
+
+<!-- فیلتر تاریخ بالا (همیشه افقی حتی در موبایل) -->
+<div class="bg-white rounded-lg shadow-md p-4 mb-6 max-w-4xl mx-auto">
+  <div class="flex flex-wrap gap-x-4 gap-y-4 items-end">
+    
+    <div class="w-full sm:w-auto flex-1 min-w-[150px]">
+      <label class="text-sm block">از تاریخ:</label>
+      <input id="fromDate" type="text" class="date-picker border w-full px-3 py-2 rounded mt-1" placeholder="تاریخ شروع">
+    </div>
+
+    <div class="w-full sm:w-auto flex-1 min-w-[150px]">
+      <label class="text-sm block">تا تاریخ:</label>
+      <input id="toDate" type="text" class="date-picker border w-full px-3 py-2 rounded mt-1" placeholder="تاریخ پایان">
+    </div>
+
+    <div class="w-full sm:w-auto flex justify-end min-w-[150px]">
+      <button class="bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 w-full sm:w-auto">اعمال فیلتر</button>
+    </div>
+
+  </div>
+</div>
+
+  <!-- جدول سفارشات -->
+  <div class="bg-white rounded-lg shadow-md overflow-x-auto max-w-7xl mx-auto">
+    <table class="w-full min-w-[900px] divide-y divide-gray-200 text-sm text-center" >
+      <thead class="bg-orange-500 text-white">
+        <tr>
+          <th class="py-3 px-4 whitespace-nowrap">محصولات خریداری‌شده</th>
+          <th class="py-3 px-4">نام کاربر</th>
+          <th class="py-3 px-4">آدرس</th>
+          <th class="py-3 px-4">تاریخ</th>
+          <th class="py-3 px-4">ساعت</th>
+          <th class="py-3 px-4">قیمت کل</th>
+          <th class="py-3 px-4">وضعیت</th>
+          <th class="py-3 px-4">حذف</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-700 hover:bg-gray-200">
+        <tr class="border-t">
+          <td class="py-4 px-4 text-right whitespace-normal">
+            <div class="flex flex-col">
+              <span>کفش ایمنی × ۵</span>
+              <span>کلاه ایمنی × ۳</span>
+              <span>دستکش ایمنی × ۴</span>
+            </div>
+          </td>
+          <td class="py-4 px-4">علی محمدی</td>
+          <td class="py-4 px-4">تهران، خیابان آزادی</td>
+          <td class="py-4 px-4">۱۴۰۳/۰۵/۱۰</td>
+          <td class="py-4 px-4">۱۴:۳۰</td>
+          <td class="py-4 px-4">۳,۲۵۰,۰۰۰ تومان</td>
+          <td class="py-4 px-4">
+            <div class="flex justify-center gap-2">
+              <button class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">اکسپت</button>
+              <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">ریجکت</button>
+            </div>
+          </td>
+          <td class="py-4 px-4">
+            <button class="text-red-600 hover:text-red-800" title="حذف">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+        <!-- بقیه سفارشات -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- پایین جدول -->
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-6 gap-4">
+    <!-- حذف همه -->
+    <button class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">
+      حذف همه سفارشات این صفحه
+    </button>
+
+    <!-- صفحه‌بندی -->
+    <div class="flex gap-2">
+      <button class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">صفحه قبل</button>
+      <button class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">صفحه بعد</button>
+    </div>
+  </div>
+
+
+
+  <script src="/src/main.js" type="module" defer></script>
+  <script src="/src/adminOrders.js" type="module" defer></script>
+
+</body>
+</html>

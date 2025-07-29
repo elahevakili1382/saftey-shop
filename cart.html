@@ -114,29 +114,95 @@
       </div>
 
       <!-- خلاصه سبد خرید -->
-      <div class="w-full md:w-1/4 bg-white p-6 rounded-lg shadow-md border border-gray-200 space-y-2">
-        <h2 class="text-xl font-bold text-center text-gray-800 border-b pb-2 mb-6">💰 مجموع سبد خرید</h2>
+   <!-- خلاصه سبد خرید + روش‌های ارسال -->
+<div class="w-full md:w-1/4 flex flex-col gap-6">
+  <!-- خلاصه سبد خرید -->
+  <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 space-y-2">
+    <h2 class="text-xl font-bold text-center text-gray-800 border-b pb-2 mb-6">💰 مجموع سبد خرید</h2>
 
-        <div class="flex justify-between text-gray-700 text-sm">
-          <span>تعداد آیتم‌ها:</span>
-          <span id="total-items" class="font-medium">0</span>
-        </div>
+    <div class="flex justify-between text-gray-700 text-sm">
+      <span>تعداد آیتم‌ها:</span>
+      <span id="total-items" class="font-medium">0</span>
+    </div>
 
-        <div class="flex justify-between text-gray-700 text-sm">
-          <span>جمع کل:</span>
-          <span id="total-price" class="font-bold text-orange-600">0 تومان</span>
-        </div>
+    <div class="flex justify-between text-gray-700 text-sm">
+      <span>جمع کل:</span>
+      <span id="total-price" class="font-bold text-orange-600">0 تومان</span>
+    </div>
 
-        <a href="#" id="checkout-btn"
-          class="block w-full text-center bg-green-600 text-white py-3 rounded-lg font-sans transition mt-6">
-          🧾 پرداخت و ثبت سفارش
-        </a>
+    <div class="flex justify-between text-green-700 text-sm mt-2">
+      <span>💵 سود شما از این خرید:</span>
+      <span id="total-profit" class="font-bold">0 تومان</span>
+    </div>
 
-        <button id="clear-cart"
-          class="w-full bg-orange-500 text-white hover:border-2 border-orange-700 hover:bg-white hover:text-orange-700 py-2 rounded-lg text-sm transition mt-2">
-          🗑️ خالی کردن سبد خرید
-        </button>
-      </div>
+    <a href="#" id="checkout-btn"
+      class="block w-full text-center bg-green-600 text-white py-3 rounded-lg font-sans transition mt-6">
+      🧾 پرداخت و ثبت سفارش
+    </a>
+
+    <button id="clear-cart"
+      class="w-full bg-orange-500 text-white hover:border-2 border-orange-700 hover:bg-white hover:text-orange-700 py-2 rounded-lg text-sm transition mt-2">
+      🗑️ خالی کردن سبد خرید
+    </button>
+  </div>
+
+  <!-- روش‌های ارسال -->
+  <div class="w-full bg-gray-50 border border-dashed border-gray-300 rounded-lg p-4 text-sm space-y-4">
+    <h3 class="text-center font-bold text-gray-700 text-base mb-2">📦 انتخاب استان و روش ارسال</h3>
+
+    <div class="flex flex-col gap-2">
+      <label for="province-select" class="text-sm text-gray-700 font-medium">استان خود را انتخاب کنید:</label>
+      <select id="province-select"
+        class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-orange-400 text-sm">
+        <option value="" disabled selected>-- انتخاب استان --</option>
+        <option>آذربایجان شرقی</option>
+        <option>آذربایجان غربی</option>
+        <option>اردبیل</option>
+        <option>اصفهان</option>
+        <option>البرز</option>
+        <option>ایلام</option>
+        <option>بوشهر</option>
+        <option>تهران</option>
+        <option>چهارمحال و بختیاری</option>
+        <option>خراسان جنوبی</option>
+        <option>خراسان رضوی</option>
+        <option>خراسان شمالی</option>
+        <option>خوزستان</option>
+        <option>زنجان</option>
+        <option>سمنان</option>
+        <option>سیستان و بلوچستان</option>
+        <option>فارس</option>
+        <option>قزوین</option>
+        <option>قم</option>
+        <option>کردستان</option>
+        <option>کرمان</option>
+        <option>کرمانشاه</option>
+        <option>کهگیلویه و بویراحمد</option>
+        <option>گلستان</option>
+        <option>گیلان</option>
+        <option>لرستان</option>
+        <option>مازندران</option>
+        <option>مرکزی</option>
+        <option>هرمزگان</option>
+        <option>همدان</option>
+        <option>یزد</option>
+      </select>
+    </div>
+
+    <div id="shipping-methods" class="text-sm text-gray-600">
+      <p>لطفاً استان را انتخاب کنید تا روش‌های ارسال نمایش داده شود.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
     </div>
   </div>
 

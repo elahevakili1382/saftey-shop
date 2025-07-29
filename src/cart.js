@@ -6,6 +6,8 @@ const totalPriceEl = document.getElementById('total-price');
 const totalItemsEl = document.getElementById('total-items');
 const clearBtn = document.getElementById('clear-cart');
 
+
+
 function renderCartTable() {
   const cart = getCart();
   cartContainer.innerHTML = '';
@@ -97,17 +99,32 @@ function updateTotal() {
   if (!totalPriceEl || !totalItemsEl) return;
   const cart = getCart();
 
-  const total = cart.reduce((sum, item) => {
+  let total = 0;
+  let totalItems = 0;
+  let totalProfit = 0;
+
+  cart.forEach(item => {
     const price = Number(faToEnDigits(item.price)) || 0;
     const quantity = Number(faToEnDigits(item.quantity)) || 0;
-    return sum + price * quantity;
-  }, 0);
 
-  const totalItems = cart.reduce((sum, item) => sum + (Number(faToEnDigits(item.quantity)) || 0), 0);
+    total += price * quantity;
+    totalItems += quantity;
+
+    // فرض سود به صورت تفاوت قیمت اصلی و تخفیف (در صورت وجود)
+    const originalPrice = item.originalPrice ? Number(faToEnDigits(item.originalPrice)) : price;
+    const profitPerItem = originalPrice - price;
+    totalProfit += profitPerItem * quantity;
+  });
 
   totalPriceEl.textContent = `${total.toLocaleString('fa-IR')} تومان`;
   totalItemsEl.textContent = totalItems.toLocaleString('fa-IR');
+
+  const totalProfitEl = document.getElementById('total-profit');
+  if (totalProfitEl) {
+    totalProfitEl.textContent = `${totalProfit > 0 ? totalProfit.toLocaleString('fa-IR') : 0} تومان`;
+  }
 }
+
 
 clearBtn.addEventListener('click', () => {
   clearCart();
@@ -117,3 +134,23 @@ clearBtn.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
   renderCartTable();
 });
+ document.addEventListener("DOMContentLoaded", () => {
+    const select = document.getElementById("province-select");
+    const shippingInfo = document.getElementById("shipping-methods");
+
+    select?.addEventListener("change", () => {
+      const province = select.value;
+
+      if (province === "تهران") {
+        shippingInfo.innerHTML = `
+          <p>🔸 ارسال با پیک فوری یا پیک استاندارد</p>
+          <p>🕓 تحویل: همان روز یا حداکثر روز بعد</p>
+        `;
+      } else {
+        shippingInfo.innerHTML = `
+          <p>🔸 ارسال با پست پیشتاز یا تیپاکس</p>
+          <p>🕓 تحویل: ۲ تا ۵ روز کاری بسته به موقعیت شما</p>
+        `;
+      }
+    });
+  });

@@ -9,23 +9,28 @@ export function saveCart(cart) {
 }
 
 export function addToCart(product) {
-  let cart = getCart();
-  const existingIndex = cart.findIndex(item => item.id === product.id);
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  if (existingIndex > -1) {
-    // افزایش تعداد محصول موجود در سبد
-    let currentQuantity = Number(faToEnDigits(String(cart[existingIndex].quantity))) || 0;
-    cart[existingIndex].quantity = String(currentQuantity + 1);
+  const existingItem = cart.find(item => item.id === product.id);
+
+  // 👇 تنظیم قیمت اصلی و تخفیف‌خورده قبل از ذخیره
+  const originalPrice = product.discountPrice ? product.price : null;
+  const finalPrice = product.discountPrice || product.price;
+
+  if (existingItem) {
+    existingItem.quantity += 1;
   } else {
-    // اضافه کردن محصول جدید به سبد با مقدار quantity=1 (رشته انگلیسی)
     cart.push({
       ...product,
-      quantity: '1',
-      price: String(product.price), // مطمئن شو که قیمت به صورت رشته انگلیسی ذخیره شده
+      price: finalPrice,
+      originalPrice: originalPrice,
+      quantity: 1,
     });
   }
+
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+
 
 export function clearCart() {
   localStorage.removeItem('cart');
