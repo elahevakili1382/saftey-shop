@@ -1,31 +1,39 @@
+/* ==========================
+   Import های کتابخانه‌ها
+   ========================== */
+@import "primeicons/primeicons.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "swiper/css";
+@import "swiper/css/navigation";
+
+/* ==========================
+   Tailwind directives
+   ========================== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'primeicons/primeicons.css';
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import 'swiper/css';
-@import 'swiper/css/navigation';
 
+/* ==========================
+   فونت سفارشی
+   ========================== */
+@font-face {
+  font-family: 'Vazir';
+  src: url('/saftey-shop/fonts/Vazir.woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
+body {
+  font-family: 'Vazir', sans-serif;
+}
 
-  @font-face {
-      font-family: 'Vazir';
-     src: url('/saftey-shop/fonts/Vazir.woff');
-      font-weight: normal;
-      font-style: normal;
-    }
-  body {
-    font-family: 'Vazir', sans-serif;
-  }
-  html {
+html {
   overflow-y: scroll;
 }
 
-  /* .rtl {
-    direction: rtl;
-  } */
-
-  
+/* ==========================
+   Animation و Utilities سفارشی
+   ========================== */
 @layer utilities {
   @keyframes customFadeUp {
     0% {
@@ -60,10 +68,11 @@
   .animate-fade-up {
     animation: customFadeUp 1s ease-out both;
   }
-  
 }
 
-
+/* ==========================
+   Keyframes عمومی
+   ========================== */
 @keyframes bounce {
   0%, 100% {
     transform: translateY(-25%);
@@ -74,4 +83,3 @@
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
-

@@ -3,8 +3,8 @@ import { updateCartCount } from './cartCount.js';
 import { comment } from 'postcss';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const commentForm = document.getElementById('.commentForm');
-  const commentList = document.getElementById('.commentList');
+  const commentForm = document.getElementById('commentForm');
+  const commentList = document.getElementById('commentList');
   const productId = JSON.parse(localStorage.getItem('selectedProduct'))?.id;
   const productData = localStorage.getItem('selectedProduct');
   if (!productData) return;

@@ -6,7 +6,9 @@ content: [
   "./index.html",
   "./contact.html",          // ← این رو اضافه کن اگه فایل خارج از src هست
   "./src/**/*.{js,ts,jsx,tsx}",
-  "./**/*.html",             // ← همه فایل‌های HTML در پروژه
+  "./**/*.html",   
+  "./css/**/*.css"
+          // ← همه فایل‌های HTML در پروژه
 ],
 theme: {
     extend: {
