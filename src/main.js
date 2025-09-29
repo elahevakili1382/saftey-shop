@@ -2,11 +2,6 @@ import { Navigation, Autoplay } from 'swiper/modules';
 
 import '../css/styles.css';
 import '../css/output.css';
-// import Swiper from 'swiper';
-// import 'swiper/swiper-bundle.css';
-// import 'swiper/css/navigation';
-// import { Navigation, Autoplay } from 'swiper/modules';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
@@ -236,7 +231,7 @@ updateCartCount();
   // محصولات بروز 
 async function loadLatestProducts() {
   try {
-    const basePath = import.meta.env.BASE_URL;
+const basePath = import.meta.env.BASE_URL || '/saftey-shop/';
     const res = await fetch(`${basePath}data/products.json`);
     if (!res.ok) throw new Error('خطا در دریافت لیست محصولات');
     
