@@ -1,7 +1,7 @@
 [
   {
     "id":1,
-    "image": "/saftey-shop/images/hamlet1.png",
+    "image": "/images/hamlet1.png",
     "title": "کلاه ایمنی مهندسی",
     "price": "۱۵۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -23,7 +23,7 @@
 
 {
   "id": 2,
-  "image": "/saftey-shop/images/full-face-mask-3.avif",
+  "image": "/images/full-face-mask-3.avif",
   "title": "دستکش نسوز صنعتی",
   "price": "۱۲۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -43,7 +43,7 @@
 
   {
      "id":3,
-    "image": "/saftey-shop/images/flashlight.png",
+    "image": "/images/flashlight.png",
     "title": "چراغ قوه ",
     "price": "۱۸۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -64,7 +64,7 @@
   },
   {
      "id":4,
-    "image": "/saftey-shop/images/flashlight.png",
+    "image": "/images/flashlight.png",
     "title": "ماسک فیلتردار",
     "price": "۹۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -85,7 +85,7 @@
   },
   {
      "id":5,
-    "image": "/saftey-shop/images/glove2.png",
+    "image": "/images/glove2.png",
     "title": "دستکش ایمنی ",
     "price": "۱۵۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -106,7 +106,7 @@
   },
   {
      "id":6,
-    "image": "/saftey-shop/images/tools.jpg",
+    "image": "/images/tools.jpg",
     "title": "ابزار ",
     "price": "۱۲۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -128,7 +128,7 @@
   },
   {
      "id":7,
-    "image": "/saftey-shop/images/traffic-control.jpg",
+    "image": "/images/traffic-control.jpg",
     "title": "مانع ترافیکی ",
     "price": "۱۸۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -149,7 +149,7 @@
   },
   {
      "id":8,
-    "image": "/saftey-shop/images/hamlet2.png",
+    "image": "/images/hamlet2.png",
     "title": "کلاه ایمنی ",
     "price": "۹۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -171,19 +171,19 @@
   },
   {
      "id":9,
-    "image": "/saftey-shop/images/tools.jpg",
+    "image": "/images/tools.jpg",
     "title": "ابزار ",
     "price": "۱۵۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
 
           "category": " تجهیزات کار در ارتفاع ",
               "subcategory": "ماسک ایمنی",
-    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "mainImage": "/images/mask/6200-1.avif",
     "gallery": [
-      "/saftey-shop/images/mask/6200-1.avif",
-      "/saftey-shop/images/mask/6200-3m-2.avif",
-      "/saftey-shop/images/mask/6200-3m-3.avif",
-      "/saftey-shop/images/mask/6200-3m-4.avif"
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
     ],
     "sizes": ["کوچک", "متوسط", "بزرگ"],
     "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
@@ -192,19 +192,19 @@
   },
   {
      "id":10,
-    "image": "/saftey-shop/images/boot2.png",
+    "image": "/images/boot2.png",
     "title": " کفش ایمنی ",
     "price": "۱۲۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
 
           "category": " تجهیزات حفاظت فردی ",
               "subcategory": "ماسک ایمنی",
-    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "mainImage": "/images/mask/6200-1.avif",
     "gallery": [
-      "/saftey-shop/images/mask/6200-1.avif",
-      "/saftey-shop/images/mask/6200-3m-2.avif",
-      "/saftey-shop/images/mask/6200-3m-3.avif",
-      "/saftey-shop/images/mask/6200-3m-4.avif"
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
     ],
     "sizes": ["کوچک", "متوسط", "بزرگ"],
     "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
@@ -214,19 +214,19 @@
   },
   {
      "id":11,
-    "image": "/saftey-shop/images/medical-e-plore.avif",
+    "image": "/images/medical-e-plore.avif",
     "title": " ماسک ایمنی ",
     "price": "۱۵۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
 
           "category": " تجهیزات تنفسی ",
               "subcategory": "ماسک ایمنی",
-    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "mainImage": "/images/mask/6200-1.avif",
     "gallery": [
-      "/saftey-shop/images/mask/6200-1.avif",
-      "/saftey-shop/images/mask/6200-3m-2.avif",
-      "/saftey-shop/images/mask/6200-3m-3.avif",
-      "/saftey-shop/images/mask/6200-3m-4.avif"
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
     ],
     "sizes": ["کوچک", "متوسط", "بزرگ"],
     "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
@@ -235,19 +235,19 @@
   },
   {
      "id":12,
-    "image": "/saftey-shop/images/uvex-hearing-protect.webp",
+    "image": "/images/uvex-hearing-protect.webp",
     "title": "گوشی صداگیر",
     "price": "۱۲۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
 
           "category": " تجهیزات حفاظت فردی ",
               "subcategory": "ماسک ایمنی",
-    "mainImage": "/saftey-shop/images/mask/6200-1.avif",
+    "mainImage": "/images/mask/6200-1.avif",
     "gallery": [
-      "/saftey-shop/images/mask/6200-1.avif",
-      "/saftey-shop/images/mask/6200-3m-2.avif",
-      "/saftey-shop/images/mask/6200-3m-3.avif",
-      "/saftey-shop/images/mask/6200-3m-4.avif"
+      "/images/mask/6200-1.avif",
+      "/images/mask/6200-3m-2.avif",
+      "/images/mask/6200-3m-3.avif",
+      "/images/mask/6200-3m-4.avif"
     ],
     "sizes": ["کوچک", "متوسط", "بزرگ"],
     "description": "صنایع پیشنهادی شامل ساخت و ساز، تولید عمومی، زیرساخت‌های سنگین..."
