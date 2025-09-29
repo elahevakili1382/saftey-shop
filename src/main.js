@@ -13,7 +13,6 @@ import 'swiper/css/autoplay';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'primeicons/primeicons.css';
 import Swiper from 'swiper';
-import { MotionConfig } from 'framer-motion';
 import { addToCart } from './storage.js';
 import { createProductCard } from './productCard.js';
 import { updateCartCount } from './cartCount.js';
