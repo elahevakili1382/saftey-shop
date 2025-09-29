@@ -9,13 +9,13 @@ export function saveCart(cart) {
 }
 
 export function addToCart(product) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+  const cart = getCart();
   const existingItem = cart.find(item => item.id === product.id);
 
-  // 👇 تنظیم قیمت اصلی و تخفیف‌خورده قبل از ذخیره
-  const originalPrice = product.discountPrice ? product.price : null;
-  const finalPrice = product.discountPrice || product.price;
+  const price = Number(faToEnDigits(product.price));
+  const discountPrice = product.discountPrice ? Number(faToEnDigits(product.discountPrice)) : null;
+  const originalPrice = discountPrice ? price : null;
+  const finalPrice = discountPrice || price;
 
   if (existingItem) {
     existingItem.quantity += 1;
@@ -28,8 +28,9 @@ export function addToCart(product) {
     });
   }
 
-  localStorage.setItem('cart', JSON.stringify(cart));
+  saveCart(cart);
 }
+
 
 
 export function clearCart() {
