@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
+  import { defineConfig } from 'vite'
 
-export default defineConfig({
-  base: '/saftey-shop/', // حتما این رو درست وارد کن: اسم ریپازیتوری گیت‌هاب‌ت
-    })
+  export default defineConfig({
+    base: '/', // حتما این رو درست وارد کن: اسم ریپازیتوری گیت‌هاب‌ت
+      })
