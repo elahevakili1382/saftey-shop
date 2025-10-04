@@ -3,26 +3,13 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   content: [
-    "./index.html",
-    "./contact.html",  
-    "./login.html",
-    "./register.html",
-    "./cart.html",
-    "./fail.html",
-    "./success.html",
-    "./firefighting-equipment.html",
-    "./forget-password.html",
-    "./product-category.html",
-    "./register.html",
-    "./saftey-equipment.html",
-    "./product-detail.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./css/**/*.css"
+    "./*.html",                 // همه فایل‌های HTML در ریشه
+    "./src/**/*.{js,ts,jsx,tsx}" // همه فایل‌های داخل src
   ],
   theme: {
     extend: {
       fontFamily: {
-      vazir: ['Vazir', 'sans-serif'],
+        vazir: ['Vazir', 'sans-serif'],
       }
     },
   },

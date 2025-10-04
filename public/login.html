@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ورود</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @font-face {
         font-family: 'Vazir';
@@ -15,7 +14,7 @@
       }
     </style>
   </head>
-  <body class="h-screen overflow-hidden">
+  <body class="h-screen">
 
     <div class="h-full flex"> <!-- اضافه شد: flex -->
       <!-- ✅ فرم ورود، نصف سمت راست -->
@@ -36,9 +35,8 @@
         </div>
 
         <div class="w-full max-w-sm">
-          <h2 class="text-2xl font-bold mb-6 text-right">ثبت نام در سایت</h2>
-          <form class="space-y-5" id="registerForm">
-         
+          <h2 class="text-2xl font-bold mb-6 text-right">ورود به حساب کاربری</h2>
+          <form class="space-y-5" id="loginForm">
             <div class="relative">
               <input type="text" id="username" name="username" required class="peer w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-600 text-right" />
               <label for="username" class="absolute text-gray-500 right-4 top-2 transition-all peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-sm peer-valid:text-sm bg-gray-50 rounded-full px-2">نام کاربری</label>
@@ -46,26 +44,23 @@
 
             <div class="relative">
               <input type="email" id="email" name="email" required class="peer w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-600 text-right" />
-              <label for="email" class="absolute text-gray-500 right-4 top-2 transition-all peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-sm peer-valid:text-sm bg-gray-50 rounded-full px-2">ایمیل </label>
+              <label for="email" class="absolute text-gray-500 right-4 top-2 transition-all peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-sm peer-valid:text-sm bg-gray-50 rounded-full px-2">ایمیل</label>
             </div>
 
-              <div class="relative">
+            <div class="relative">
               <input type="password" id="password" name="password" required class="peer w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-600 text-right" />
-              <label for="password" class="absolute text-gray-500 right-4 top-2 transition-all peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-sm peer-valid:text-sm bg-gray-50 rounded-full px-2">رمز عبور  </label>
+              <label for="password" class="absolute text-gray-500 right-4 top-2 transition-all peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-sm peer-valid:text-sm bg-gray-50 rounded-full px-2">رمز عبور</label>
             </div>
 
-                   <div class="relative">
-              <input type="password" id="confirmPassword" name="confirmPassword" required class="peer w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-blue-600 text-right" />
-              <label for="password" class="absolute text-gray-500 right-4 top-2 transition-all peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-sm peer-valid:text-sm bg-gray-50 rounded-full px-2"> تایید رمز عبور </label>
-            </div>
+       
+<button type="submit" class="w-full border-red-500 text-orange-950 font-bold py-2 px-4 rounded hover:bg-blue-700 hover:text-white hover:border-none transition-all duration-300">
+  ورود
+</button>
 
 
-            <button type="submit"  class="w-full border border-red-500 text-orange-950 font-bold py-2 px-4 rounded hover:bg-blue-700 hover:text-white hover:border-none transition-all duration-300">
-              ورود
-            </button>
 
             <p class="text-right text-sm">
-              حساب دارید؟ <a href="login.html" class="text-blue-600  hover:underline">ورود </a>
+              حساب کاربری ندارید؟ <a href="register.html" class="text-blue-600  hover:underline">ثبت‌نام </a>
             </p>
           </form>
         </div>
@@ -77,8 +72,8 @@
       </div>
     </div>
 
-    <script src="/src/main.js" defer type="module"></script>
-  <script src="/src/register.js" defer type="module"></script>
+    <script src="./src/main.js" defer type="module"></script>
+    <script src="./src/auth.js" defer type="module"></script>
 
   </body>
 </html>
