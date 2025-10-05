@@ -10,7 +10,7 @@ export function updateCartCount() {
   if (!cartCountSpan) return;
 
   const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  const count = cart.reduce((sum, item) => sum + Number(faToEnDigits(item.quantity || '0')), 0);
+  const count = cart.reduce((sum, item) => sum + Number(faToEnDigits(item.qty || '0')), 0);
 
   if (count > 0) {
     cartCountSpan.textContent = count;

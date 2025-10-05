@@ -1,4 +1,7 @@
 import { getCart, clearCart } from './storage.js';
+
+import { HeaderWithNav, attachHeaderEvents } from './components/Header.js';
+import { Footer } from './components/Footer.js';
 import { faToEnDigits, updateCartCount } from './cartCount.js';
 
 const cartContainer = document.getElementById('cart-container');
@@ -24,7 +27,7 @@ function renderCartTable() {
 
   cart.forEach(item => {
    const price = Number(faToEnDigits(String(item.price))) || 0;
-const quantity = Number(faToEnDigits(String(item.quantity))) || 0;
+const quantity = Number(faToEnDigits(item.qty)) || 0;
 
 
     const row = document.createElement('tr');
@@ -77,15 +80,18 @@ row.querySelector('.decrease-qty').addEventListener('click', () => {
   updateTotal();
   updateCartCount();
 }
-function updateQuantity(productId, newQuantity) {
+
+
+function updateQuantity(productId, newQty) {
   const cart = getCart().map(item => {
     if (item.id === productId) {
-      return { ...item, quantity: newQuantity };
+      return { ...item, qty: newQty };
     }
     return item;
   });
   localStorage.setItem('cart', JSON.stringify(cart));
   renderCartTable();
+  updateCartCount();
 }
 
 
@@ -132,8 +138,14 @@ clearBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderCartTable();
+  const headerElement = HeaderWithNav();
+  document.body.prepend(headerElement);
+  attachHeaderEvents(); // فعال سازی منو و بروزرسانی cartCount
+  renderCartTable();   // پر کردن جدول
+  document.body.appendChild(Footer());
 });
+
+
  document.addEventListener("DOMContentLoaded", () => {
     const select = document.getElementById("province-select");
     const shippingInfo = document.getElementById("shipping-methods");

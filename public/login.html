@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ورود</title>
     <link rel="stylesheet" href="./css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   </head>
   <body class="h-screen">
@@ -14,18 +15,20 @@
       <div class="w-full md:w-1/2 h-full flex items-center justify-center bg-white px-6 relative z-10">
         
         <!-- 🔵 Blob بالا راست -->
-        <div class="absolute top-[-40px] right-[-40px] w-40 h-40 z-[-1] opacity-50">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#f5b041" d="M39.5,25.5C25.5,47,-29.2,47.7,-42.6,26.6C-55.9,5.4,-28,-37.6,-0.6,-37.9C26.7,-38.3,53.5,4,39.5,25.5Z" transform="translate(100 100)" />
-          </svg>
-        </div>
+        <!-- بالا راست -->
+<div style="position:absolute; top:-40px; right:-40px; width:10rem; height:10rem; opacity:0.5; z-index:-1;">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#f5b041" d="M39.5,25.5C25.5,47,-29.2,47.7,-42.6,26.6C-55.9,5.4,-28,-37.6,-0.6,-37.9C26.7,-38.3,53.5,4,39.5,25.5Z"/>
+  </svg>
+</div>
 
-        <!-- 🔵 Blob پایین چپ -->
-        <div class="absolute bottom-[-40px] left-[-40px] w-40 h-40 z-[-1] opacity-50">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#f5b041" d="M39.5,25.5C25.5,47,-29.2,47.7,-42.6,26.6C-55.9,5.4,-28,-37.6,-0.6,-37.9C26.7,-38.3,53.5,4,39.5,25.5Z" transform="translate(100 100)" />
-          </svg>
-        </div>
+<!-- پایین چپ -->
+<div style="position:absolute; bottom:-40px; left:-40px; width:10rem; height:10rem; opacity:0.5; z-index:-1;">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#f5b041" d="M39.5,25.5C25.5,47,-29.2,47.7,-42.6,26.6C-55.9,5.4,-28,-37.6,-0.6,-37.9C26.7,-38.3,53.5,4,39.5,25.5Z"/>
+  </svg>
+</div>
+
 
         <div class="w-full max-w-sm">
           <h2 class="text-2xl font-bold mb-6 text-right">ورود به حساب کاربری</h2>
@@ -65,8 +68,7 @@
       </div>
     </div>
 
-    <script src="./src/main.js" defer type="module"></script>
-    <script src="./src/auth.js" defer type="module"></script>
+    <script src="/src/auth.js" type="module" defer></script>
 
   </body>
 </html>

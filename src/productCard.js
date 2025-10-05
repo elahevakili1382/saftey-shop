@@ -1,7 +1,7 @@
-import { updateCartCount } from './cartCount.js';
-import { addToCart } from './storage.js';
+import { updateCartCount } from './cartCount.js'; // ← اضافه کردن import
 import { showToast } from './toast.js';
 
+// utils
 function parsePersianNumber(str) {
   if (typeof str === 'number') return str;
   return Number(str.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/٬/g, ''));
@@ -11,7 +11,8 @@ function toPersianDigits(number) {
   return number.toLocaleString('fa-IR');
 }
 
-export function createProductCard(product) {
+// تابع اصلی
+export function createProductCard(product, { onAddToCart, onSelectProduct } = {}) {
   const card = document.createElement('div');
   card.setAttribute('data-aos', 'fade-up');
   card.setAttribute('data-aos-delay', '100');
@@ -57,7 +58,7 @@ export function createProductCard(product) {
     </button>
   `;
 
-  // کلیک روی کارت (تصویر یا عنوان)
+  // کلیک روی تصویر یا عنوان → صفحه جزئیات
   card.querySelectorAll('.product-link').forEach(el => {
     el.addEventListener('click', () => {
       localStorage.setItem('selectedProduct', JSON.stringify(product));
@@ -65,14 +66,22 @@ export function createProductCard(product) {
     });
   });
 
-  // دکمه افزودن به سبد خرید
+  // کلیک روی دکمه افزودن به سبد خرید
   const btn = card.querySelector('button');
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    addToCart(product);
-    showToast(`✅ «${product.title}» به سبد خرید اضافه شد`);
-    updateCartCount();
-  });
+btn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  
+  // اضافه کردن به localStorage
+  const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+  const existing = cart.find(item => item.id === product.id);
+  if (existing) existing.qty += 1;
+  else cart.push({ ...product, qty: 1 });
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  updateCartCount(); // بروزرسانی counter
+  showToast('محصول با موفقیت به سبد خرید اضافه شد ✅'); // نمایش پیغام
+});
 
   return card;
 }
