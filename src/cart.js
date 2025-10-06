@@ -1,3 +1,4 @@
+import '../css/styles.css';
 import { getCart, clearCart } from './storage.js';
 
 import { HeaderWithNav, attachHeaderEvents } from './components/Header.js';
