@@ -1,4 +1,5 @@
 import { slugify } from './slugify.js';
+import '../css/styles.css';
 
 export const navItems = [
   {

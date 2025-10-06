@@ -1,6 +1,7 @@
 import { HeaderWithNav, attachHeaderEvents } from './components/Header.js';
 import { Footer } from './components/Footer.js';
 import { updateCartCount } from './cartCount.js';
+import '../css/styles.css';
 
 // محصول پیش‌فرض دمو
 const defaultProduct = {

@@ -1,5 +1,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import '../css/styles.css';
 
 import { updateCartCount } from './cartCount.js';
 import { renderDesktopMenu, renderMobileMenu, toggleMobileMenu } from './nav.js';

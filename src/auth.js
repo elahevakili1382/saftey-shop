@@ -1,3 +1,5 @@
+import '../css/styles.css';
+
 document.getElementById('loginForm')?.addEventListener('submit', async function (e) {
   e.preventDefault();
 

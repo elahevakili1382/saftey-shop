@@ -1,4 +1,5 @@
 // src/register.js
+import '../css/styles.css';
 
 // گرفتن فرم ثبت‌نام
 const registerForm = document.getElementById('registerForm');

@@ -1,4 +1,5 @@
 // فایل: forgot-password.js
+import '../css/styles.css';
 
 document.getElementById("forgotForm").addEventListener("submit", (e) => {
   e.preventDefault();
