@@ -7,26 +7,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   </head>
-  <body class="h-screen">
+  <body class="h-screen relative">
 
-    <div class="h-full flex"> <!-- اضافه شد: flex -->
+    <div class="h-full flex relative"> <!-- اضافه شد: flex -->
       <!-- ✅ فرم ورود، نصف سمت راست -->
       <div class="w-full md:w-1/2 h-full flex items-center justify-center bg-white px-6 relative z-10">
         
         <!-- 🔵 Blob بالا راست -->
 <!-- بالا راست -->
-<div class="absolute top-0 right-0 w-40 h-40 opacity-70 z-0">
+<div class="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 w-40 h-40 opacity-70 z-0">
   <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <path fill="#f59e0b" d="M39.5,25.5C25.5,47,-29.2,47.7,-42.6,26.6C-55.9,5.4,-28,-37.6,-0.6,-37.9C26.7,-38.3,53.5,4,39.5,25.5Z"/>
   </svg>
 </div>
 
 <!-- پایین چپ -->
-<div class="absolute bottom-0 left-0 w-40 h-40 opacity-70 z-0">
+<div class="absolute bottom-0 left-0 -translate-x-1/4 translate-y-1/4 w-40 h-40 opacity-70 z-0">
   <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <path fill="#f59e0b" d="M39.5,25.5C25.5,47,-29.2,47.7,-42.6,26.6C-55.9,5.4,-28,-37.6,-0.6,-37.9C26.7,-38.3,53.5,4,39.5,25.5Z"/>
   </svg>
 </div>
+
 
 
         <div class="w-full max-w-sm">
