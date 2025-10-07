@@ -64,7 +64,7 @@
   },
   {
      "id":4,
-    "image": "/images/flashlight.png",
+    "image": "/images/saftey-mask.avif",
     "title": "ماسک فیلتردار",
     "price": "۹۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
@@ -171,8 +171,8 @@
   },
   {
      "id":9,
-    "image": "/images/tools.jpg",
-    "title": "ابزار ",
+    "image": "/images/firefighterimg.png",
+    "title": "لباسکار",
     "price": "۱۵۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",
 
@@ -235,7 +235,7 @@
   },
   {
      "id":12,
-    "image": "/images/uvex-hearing-protect.webp",
+    "image": "/images/earmuff/3M-1271.jpg",
     "title": "گوشی صداگیر",
     "price": "۱۲۰۰۰۰",
         "discountPrice": "۱۹۰۰۰۰۰",

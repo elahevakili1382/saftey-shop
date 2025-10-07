@@ -14,13 +14,15 @@ import { Footer } from './components/Footer.js';
 AOS.init({ duration: 700, offset: 120, once: true });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root');
- const headerEl = HeaderWithNav();
+  // هدر و فوتر
+  const headerEl = HeaderWithNav();
   document.body.prepend(headerEl);
   attachHeaderEvents();
-    const footerEl = Footer();
-  document.body.appendChild(footerEl); // ← اضافه کردن به DOM
 
+  const footerEl = Footer();
+  document.body.appendChild(footerEl);
+
+  // منوها
   renderDesktopMenu();
   renderMobileMenu();
 
@@ -28,14 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('closeMobileMenu')?.addEventListener('click', () => toggleMobileMenu(false));
   document.getElementById('mobileMenuOverlay')?.addEventListener('click', () => toggleMobileMenu(false));
 
+  // بارگذاری محتوا
   loadLatestProducts();
   loadBestSellingProducts();
   loadReviews();
   initBrands();
   renderFeatures();
 
-
-  
-    updateCartCount();
-
+  // شمارنده سبد خرید
+  updateCartCount();
 });
