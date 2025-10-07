@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت سفارشات</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css" />
+
+  <!-- JS Libraries -->
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js"></script>
+  <script src="https://unpkg.com/persian-date/dist/persian-date.min.js"></script>
+  <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  .persian-datepicker {
+  width: auto !important;  /* اجازه بده خودش اندازه مناسب بگیره */
+  max-width: 300px !important; /* محدودیت حداکثر */
+  font-size: 0.875rem; /* اندازه فونت مناسب */
+}
+
+</style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Sidebar -->
+  <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
+    <div>
+      <h2 class="text-xl font-bold mb-4">منو</h2>
+      <nav class="flex flex-col gap-2">
+        <a href="#" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-chart-line"></i> داشبورد
+        </a>
+        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-users"></i> مشتریان
+        </a>
+        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-box"></i> محصولات
+        </a>
+        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-gear"></i> تنظیمات
+        </a>
+      </nav>
+    </div>
+    <div class="p-4 border-t">
+      <button class="w-full flex items-center justify-center bg-red-100 text-red-600 rounded-lg py-2 hover:bg-red-200 transition">
+        <i class="fa-solid fa-right-from-bracket ml-2"></i> خروج
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 mr-64 p-6">
+    <header class="flex flex-wrap items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold">مرور کلی فروش</h1>
+
+      <!-- فیلتر تاریخ و جستجو -->
+      <div class="flex items-center gap-3">
+        <input type="text" placeholder="جستجوی محصول..." class="border rounded-lg px-3 py-2 text-sm focus:ring-1 focus:ring-orange-400 outline-none" />
+        <div class="flex items-center gap-1 bg-gray-50 border border-gray-300 rounded-2xl px-3 py-2">
+          <i class="fa-regular fa-calendar text-gray-500"></i>
+          <input id="fromDate" type="text" class="datepicker w-24 text-center outline-none bg-transparent" placeholder="از">
+          <span class="text-gray-400 mx-1">–</span>
+          <input id="toDate" type="text" class="datepicker w-24 text-center outline-none bg-transparent" placeholder="تا">
+        </div>
+        <button class="border rounded-lg px-3 py-2 bg-white hover:bg-orange-100">
+          <i class="fa-regular fa-bell text-orange-600"></i>
+        </button>
+        <img src="./images/admin-avatar.jpg" class="w-10 h-10 rounded-full border" />
+      </div>
+    </header>
+
+    <!-- کارت‌های آماری -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-lg p-4 shadow text-center">
+        <p class="text-gray-400 text-sm">کل فروش</p>
+        <h2 class="text-2xl font-bold text-orange-500">۲۵۰۰</h2>
+        <span class="text-xs text-green-500">+۴.۹٪ از ماه قبل</span>
+      </div>
+      <div class="bg-white rounded-lg p-4 shadow text-center">
+        <p class="text-gray-400 text-sm">مشتریان جدید</p>
+        <h2 class="text-2xl font-bold">۱۱۰</h2>
+        <span class="text-xs text-red-500">−۷.۵٪ از ماه قبل</span>
+      </div>
+      <div class="bg-white rounded-lg p-4 shadow text-center">
+        <p class="text-gray-400 text-sm">محصولات مرجوعی</p>
+        <h2 class="text-2xl font-bold">۷۲</h2>
+        <span class="text-xs text-red-500">−۶٪ از ماه قبل</span>
+      </div>
+      <div class="bg-white rounded-lg p-4 shadow text-center">
+        <p class="text-gray-400 text-sm">درآمد کل</p>
+        <h2 class="text-2xl font-bold">$۸,۲۲۰</h2>
+        <span class="text-xs text-gray-500">ماه قبل: $۶۲۰</span>
+      </div>
+    </section>
+
+    <!-- چارت‌ها -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white rounded-lg p-4 shadow">
+        <h3 class="font-semibold mb-4">تحلیل درآمد</h3>
+        <canvas id="revenueChart" height="150"></canvas>
+      </div>
+      <div class="bg-white rounded-lg p-4 shadow">
+        <h3 class="font-semibold mb-4">سود و زیان</h3>
+        <canvas id="profitChart" height="150"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS Script -->
+  <script type="module" src="./src/dashboard.js"></script>
+
+</body>
+</html>
