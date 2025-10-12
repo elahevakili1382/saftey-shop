@@ -83,3 +83,17 @@ html {
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
+/* ظاهرسازی ملایم برای چارت‌ها */
+section.charts .card {
+  background: linear-gradient(180deg, #fffaf7, #ffffff);
+  border: 1px solid rgba(249,115,22,0.08);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(249,115,22,0.08);
+  transition: transform 0.2s ease;
+}
+section.charts .card:hover {
+  transform: translateY(-4px);
+}
+canvas {
+  border-radius: 12px;
+}

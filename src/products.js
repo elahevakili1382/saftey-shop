@@ -69,7 +69,11 @@ export async function loadBestSellingProducts() {
           showToast('✅ محصول با موفقیت به سبد خرید اضافه شد');
         }
       });
-      firstRowContainer.appendChild(card);
+
+ const slide = document.createElement('div');
+  slide.className = 'swiper-slide';
+  slide.appendChild(card);
+  firstRowContainer.appendChild(slide);
     });
 
     secondRowProducts.forEach(product => {
@@ -80,25 +84,23 @@ export async function loadBestSellingProducts() {
           showToast('✅ محصول با موفقیت به سبد خرید اضافه شد');
         }
       });
-      secondRowContainer.appendChild(card);
-    });
+  const slide = document.createElement('div');
+  slide.className = 'swiper-slide';
+  slide.appendChild(card);
+  secondRowContainer.appendChild(slide);    });
 
     // مقداردهی Swiper ها
-   const swiperOptions = {
-  modules: [Navigation, Pagination, Autoplay],
+const swiperOptions = {
+  modules: [Autoplay],
   loop: false,
-  slidesPerView: 3,
-  spaceBetween: 24,
-  navigation: {
-    nextEl: '.brand-swiper-next, .brand-swiper-nex',
-    prevEl: '.brand-swiper-prev, .brand-swiper-pre',
-  },
-  autoplay: { delay: 2000, disableOnInteraction: false },
+  slidesPerView: 1.5,
+  spaceBetween: 16,
+  autoplay: { delay: 2500, disableOnInteraction: false },
+  // pagination: { el: '.swiper-pagination', clickable: true },
   breakpoints: {
-    0: { slidesPerView: 1.5, spaceBetween: 16 },
     480: { slidesPerView: 2, spaceBetween: 16 },
-    768: { slidesPerView: 2.5, spaceBetween: 20 },
-    1024: { slidesPerView: 3, spaceBetween: 24 },
+    768: { slidesPerView: 3, spaceBetween: 20 },
+    1024: { slidesPerView: 4, spaceBetween: 24 },
   },
 };
 

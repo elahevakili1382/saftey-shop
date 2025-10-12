@@ -15,16 +15,34 @@
   <script src="https://unpkg.com/persian-date/dist/persian-date.min.js"></script>
   <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-  .persian-datepicker {
-  width: auto !important;  /* اجازه بده خودش اندازه مناسب بگیره */
-  max-width: 300px !important; /* محدودیت حداکثر */
-  font-size: 0.875rem; /* اندازه فونت مناسب */
+
+  <style>
+    /* اطمینان از اینکه کانتینر چارت ارتفاع ثابتی داشته باشه و کانواس رفتار responsive‌ مناسبی داشته باشه */
+    section.charts > div { min-height: 260px; display: flex; flex-direction: column; }
+    section.charts canvas { width: 100% !important; height: 220px !important; }
+    /* ظاهرسازی ملایم برای کانواس */
+    section.charts .card {
+      background: linear-gradient(180deg, #fffaf7, #ffffff);
+      border-radius: 12px;
+    }
+
+   section.charts .card {
+  background: linear-gradient(180deg, #fffaf7, #ffffff);
+  border: 1px solid rgba(249,115,22,0.08);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(249,115,22,0.08);
+  transition: transform 0.2s ease;
+}
+section.charts .card:hover {
+  transform: translateY(-4px);
+}
+canvas {
+  border-radius: 12px;
 }
 
-</style>
+  </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-100">
 
   <!-- Sidebar -->
   <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
@@ -37,7 +55,7 @@
         <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
           <i class="fa-solid fa-users"></i> مشتریان
         </a>
-        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+        <a href="products.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
           <i class="fa-solid fa-box"></i> محصولات
         </a>
         <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
@@ -59,7 +77,7 @@
 
       <!-- فیلتر تاریخ و جستجو -->
       <div class="flex items-center gap-3">
-        <input type="text" placeholder="جستجوی محصول..." class="border rounded-lg px-3 py-2 text-sm focus:ring-1 focus:ring-orange-400 outline-none" />
+        <input id="searchInput" type="text" placeholder="جستجوی محصول..." class="border rounded-lg px-3 py-2 text-sm focus:ring-1 focus:ring-orange-400 outline-none" />
         <div class="flex items-center gap-1 bg-gray-50 border border-gray-300 rounded-2xl px-3 py-2">
           <i class="fa-regular fa-calendar text-gray-500"></i>
           <input id="fromDate" type="text" class="datepicker w-24 text-center outline-none bg-transparent" placeholder="از">
@@ -73,41 +91,47 @@
       </div>
     </header>
 
-    <!-- کارت‌های آماری -->
+    <!-- کارت‌های آماری (طبیعی همان HTML تو) -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
       <div class="bg-white rounded-lg p-4 shadow text-center">
         <p class="text-gray-400 text-sm">کل فروش</p>
-        <h2 class="text-2xl font-bold text-orange-500">۲۵۰۰</h2>
-        <span class="text-xs text-green-500">+۴.۹٪ از ماه قبل</span>
+        <h2 id="card-total-sales" class="text-2xl font-bold text-orange-500">—</h2>
+        <span class="text-xs text-green-500" id="card-total-change">—</span>
       </div>
       <div class="bg-white rounded-lg p-4 shadow text-center">
         <p class="text-gray-400 text-sm">مشتریان جدید</p>
-        <h2 class="text-2xl font-bold">۱۱۰</h2>
-        <span class="text-xs text-red-500">−۷.۵٪ از ماه قبل</span>
+        <h2 id="card-new-customers" class="text-2xl font-bold">—</h2>
+        <span class="text-xs text-red-500" id="card-cust-change">—</span>
       </div>
       <div class="bg-white rounded-lg p-4 shadow text-center">
         <p class="text-gray-400 text-sm">محصولات مرجوعی</p>
-        <h2 class="text-2xl font-bold">۷۲</h2>
-        <span class="text-xs text-red-500">−۶٪ از ماه قبل</span>
+        <h2 id="card-returns" class="text-2xl font-bold">—</h2>
+        <span class="text-xs text-red-500">—</span>
       </div>
       <div class="bg-white rounded-lg p-4 shadow text-center">
         <p class="text-gray-400 text-sm">درآمد کل</p>
-        <h2 class="text-2xl font-bold">$۸,۲۲۰</h2>
-        <span class="text-xs text-gray-500">ماه قبل: $۶۲۰</span>
+        <h2 id="card-total-revenue" class="text-2xl font-bold">$—</h2>
+        <span class="text-xs text-gray-500">—</span>
       </div>
     </section>
 
-    <!-- چارت‌ها -->
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-white rounded-lg p-4 shadow">
-        <h3 class="font-semibold mb-4">تحلیل درآمد</h3>
-        <canvas id="revenueChart" height="150"></canvas>
-      </div>
-      <div class="bg-white rounded-lg p-4 shadow">
-        <h3 class="font-semibold mb-4">سود و زیان</h3>
-        <canvas id="profitChart" height="150"></canvas>
-      </div>
-    </section>
+   <!-- بخش خلاصه فیلتر بالای چارت‌ها -->
+<section id="filteredSummary" class="max-w-5xl mx-auto mb-4 text-sm text-gray-600 text-right">
+  نتایج فیلتر: <strong>0</strong> سفارش — مجموع: <strong>0 تومان</strong>
+</section>
+
+<!-- چارت‌ها -->
+<section class="charts grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div class="card p-4 shadow rounded-lg">
+    <h3 class="font-semibold mb-4">تحلیل درآمد</h3>
+    <canvas id="revenueChart"></canvas>
+  </div>
+  <div class="card p-4 shadow rounded-lg">
+    <h3 class="font-semibold mb-4">سود و زیان</h3>
+    <canvas id="profitChart"></canvas>
+  </div>
+</section>
+
   </main>
 
   <!-- JS Script -->
