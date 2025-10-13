@@ -13,6 +13,7 @@ export default defineConfig({
         productDetail: resolve(__dirname, 'product-detail.html'),
         productCategory: resolve(__dirname, 'product-category.html'),
         adminOrders: resolve(__dirname, 'admin-dashbord.html'),
+       adminProducts: resolve(__dirname, 'products.html'),
         contact: resolve(__dirname, 'contact.html'),
         success: resolve(__dirname, 'success.html'),
         fail: resolve(__dirname, 'fail.html'),
