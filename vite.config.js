@@ -12,7 +12,7 @@ export default defineConfig({
         register: resolve(__dirname, 'register.html'),
         productDetail: resolve(__dirname, 'product-detail.html'),
         productCategory: resolve(__dirname, 'product-category.html'),
-        adminOrders: resolve(__dirname, 'admin-dashboard.html'),
+        adminOrders: resolve(__dirname, 'admin-dashbord.html'),
         contact: resolve(__dirname, 'contact.html'),
         success: resolve(__dirname, 'success.html'),
         fail: resolve(__dirname, 'fail.html'),
