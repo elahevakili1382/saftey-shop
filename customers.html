@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت مشتریان</title>
+
+  <!-- Tailwind & FontAwesome -->
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+  
+
+    /* کارت‌ها */
+    .stat-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(249, 115, 22, 0.15);
+      border-radius: 16px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(249, 115, 22, 0.08);
+    }
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.2);
+      border-color: rgba(249, 115, 22, 0.3);
+    }
+
+    /* جدول */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    thead {
+      background: linear-gradient(90deg, #ffedd5, #fff7ed);
+    }
+
+    th {
+      text-align: right;
+      color: #444;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+    }
+
+    td {
+      border-top: 1px solid #f3f4f6;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    tr:hover {
+      background-color: #fff7ed;
+      transition: 0.2s;
+    }
+
+    /* سرچ و فیلتر */
+    .filter-bar input,
+    .filter-bar select {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      outline: none;
+      transition: 0.2s;
+    }
+    .filter-bar input:focus,
+    .filter-bar select:focus {
+      border-color: #f97316;
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Sidebar (مثل داشبوردت) -->
+  <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
+    <div>
+      <h2 class="text-xl font-bold mb-4">منو</h2>
+      <nav class="flex flex-col gap-2">
+        <a href="admin-dashbord.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-chart-line"></i> داشبورد
+        </a>
+        <a href="#" class="menu-item active py-3 px-5 flex items-center gap-3 rounded bg-orange-50 text-orange-600">
+          <i class="fa-solid fa-users"></i> مشتریان
+        </a>
+        <a href="products.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-box"></i> محصولات
+        </a>
+        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-gear"></i> تنظیمات
+        </a>
+      </nav>
+    </div>
+    <div class="p-4 border-t">
+      <button class="w-full flex items-center justify-center bg-red-100 text-red-600 rounded-lg py-2 hover:bg-red-200 transition">
+        <i class="fa-solid fa-right-from-bracket ml-2"></i> خروج
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 mr-64 p-6">
+    
+    <!-- تیتر و سرچ -->
+    <header class="flex flex-wrap items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">مدیریت مشتریان</h1>
+      <div class="filter-bar flex items-center gap-3">
+        <input id="searchInput" type="text" placeholder="جستجوی نام یا ایمیل..." />
+        <input id="filterInput" type="text" placeholder="فیلتر کشور..." />
+        <select id="statusFilter">
+          <option value="">همه وضعیت‌ها</option>
+          <option value="active">فعال</option>
+          <option value="inactive">غیرفعال</option>
+          <option value="blocked">مسدود</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- کارت‌های آماری -->
+    <section class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+      <div class="stat-card p-5 text-center">
+        <p class="text-sm text-gray-500">مجموع مشتریان</p>
+        <h2 id="totalCustomers" class="text-3xl font-bold text-orange-600 mt-2">—</h2>
+      </div>
+      <div class="stat-card p-5 text-center">
+        <p class="text-sm text-gray-500">مشتریان جدید</p>
+        <h2 id="newCustomers" class="text-3xl font-bold text-orange-600 mt-2">—</h2>
+      </div>
+      <div class="stat-card p-5 text-center">
+        <p class="text-sm text-gray-500">مشتریان فعال</p>
+        <h2 id="activeCustomers" class="text-3xl font-bold text-orange-600 mt-2">—</h2>
+      </div>
+    </section>
+
+    <!-- لیست مشتری‌ها -->
+    <section class="bg-white rounded-2xl shadow-md p-6">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-list text-orange-500"></i>
+        لیست مشتری‌ها
+      </h2>
+
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>شناسه</th>
+              <th>مشخصات مشتری</th>
+              <th>کشور</th>
+              <th>تاریخ ایجاد</th>
+              <th>آخرین خرید</th>
+              <th>مجموع خرید</th>
+              <th>وضعیت</th>
+            </tr>
+          </thead>
+          <tbody id="customerTable">
+            <tr>
+              <td colspan="7" class="text-center py-6 text-gray-400">در حال بارگذاری...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="./src/customers.js"></script>
+</body>
+</html>

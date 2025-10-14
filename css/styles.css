@@ -97,3 +97,20 @@ section.charts .card:hover {
 canvas {
   border-radius: 12px;
 }
+/* کارت‌ها همگی یکسان شوند */
+.stats-card {
+  @apply bg-white p-4 rounded-2xl shadow transition duration-300 text-center border-t-4;
+  border-top-color: #f97316; /* نارنجی */
+}
+
+.stats-card:hover {
+  @apply bg-gradient-to-r from-orange-500 to-orange-300 text-white shadow-lg;
+}
+
+
+/* چارت‌ها بزرگ‌تر */
+.charts canvas {
+  width: 100% !important;
+  max-height: 350px; /* ارتفاع بیشتر */
+  border-radius: 16px;
+}

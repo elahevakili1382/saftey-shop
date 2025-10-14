@@ -3,86 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مدیریت سفارشات</title>
+  <title>داشبورد مدیریتی</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="../css/styles.css" />
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- آیکون‌ها و کتابخانه‌ها -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css" />
 
-  <!-- JS Libraries -->
   <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js"></script>
   <script src="https://unpkg.com/persian-date/dist/persian-date.min.js"></script>
   <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
-    /* اطمینان از اینکه کانتینر چارت ارتفاع ثابتی داشته باشه و کانواس رفتار responsive‌ مناسبی داشته باشه */
-    section.charts > div { min-height: 260px; display: flex; flex-direction: column; }
-    section.charts canvas { width: 100% !important; height: 220px !important; }
-    /* ظاهرسازی ملایم برای کانواس */
-    section.charts .card {
-      background: linear-gradient(180deg, #fffaf7, #ffffff);
+    
+    .sidebar {
+      transition: all 0.3s ease-in-out;
+    }
+    .sidebar.collapsed {
+      width: 70px;
+    }
+    .sidebar.collapsed .menu-text {
+      display: none;
+    }
+    canvas {
       border-radius: 12px;
     }
-
-   section.charts .card {
-  background: linear-gradient(180deg, #fffaf7, #ffffff);
-  border: 1px solid rgba(249,115,22,0.08);
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(249,115,22,0.08);
-  transition: transform 0.2s ease;
-}
-section.charts .card:hover {
-  transform: translateY(-4px);
-}
-canvas {
-  border-radius: 12px;
-}
-
+    
   </style>
 </head>
-<body class="bg-gray-100">
+
+<body class="flex bg-gray-50 text-gray-800">
 
   <!-- Sidebar -->
-  <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
-    <div>
-      <h2 class="text-xl font-bold mb-4">منو</h2>
-      <nav class="flex flex-col gap-2">
-        <a href="#" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
-          <i class="fa-solid fa-chart-line"></i> داشبورد
+  <aside id="sidebar"
+         class="sidebar bg-white w-64 h-screen fixed right-0 top-0 flex flex-col justify-between shadow-lg z-20 transition-all">
+    <div class="p-4">
+      <h1 class="text-2xl font-bold text-orange-500 mb-6 text-center">
+        <i class="fa-solid fa-store text-orange-500 mr-1"></i> <span class="menu-text">مدیریت</span>
+      </h1>
+      <nav class="flex flex-col gap-2 text-sm">
+        <a href="admin-dashbord.html" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-orange-50 text-orange-600 bg-orange-100 font-medium">
+          <i class="fa-solid fa-chart-line"></i> <span class="menu-text">داشبورد</span>
         </a>
-        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
-          <i class="fa-solid fa-users"></i> مشتریان
+        <a href="customers.html" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-gray-100">
+          <i class="fa-solid fa-users"></i> <span class="menu-text">مشتریان</span>
         </a>
-        <a href="products.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
-          <i class="fa-solid fa-box"></i> محصولات
+        <a href="products.html" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-gray-100">
+          <i class="fa-solid fa-box"></i> <span class="menu-text">محصولات</span>
         </a>
-        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
-          <i class="fa-solid fa-gear"></i> تنظیمات
+        <a href="#" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-gray-100">
+          <i class="fa-solid fa-gear"></i> <span class="menu-text">تنظیمات</span>
         </a>
       </nav>
     </div>
     <div class="p-4 border-t">
-      <button class="w-full flex items-center justify-center bg-red-100 text-red-600 rounded-lg py-2 hover:bg-red-200 transition">
-        <i class="fa-solid fa-right-from-bracket ml-2"></i> خروج
+      <button class="w-full flex items-center justify-center bg-red-50 text-red-600 py-2 rounded-lg hover:bg-red-100 transition">
+        <i class="fa-solid fa-right-from-bracket ml-2"></i> <span class="menu-text">خروج</span>
       </button>
     </div>
   </aside>
 
-  <!-- Main Content -->
-  <main class="flex-1 mr-64 p-6">
-    <header class="flex flex-wrap items-center justify-between mb-6">
-      <h1 class="text-2xl font-bold">مرور کلی فروش</h1>
-
-      <!-- فیلتر تاریخ و جستجو -->
+  <!-- Main -->
+  <main class="flex-1 mr-64 p-6 transition-all">
+    <!-- Top Navbar -->
+    <header class="flex flex-wrap items-center justify-between mb-6 bg-white p-4 rounded-xl shadow-sm sticky top-2 z-10">
       <div class="flex items-center gap-3">
-        <input id="searchInput" type="text" placeholder="جستجوی محصول..." class="border rounded-lg px-3 py-2 text-sm focus:ring-1 focus:ring-orange-400 outline-none" />
+        <button id="toggleSidebar" class="bg-orange-100 text-orange-600 p-2 rounded-lg hover:bg-orange-200">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h1 class="text-xl font-bold">مرور کلی فروش</h1>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <input id="searchInput" type="text" placeholder="جستجوی محصول..."
+               class="border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400 outline-none" />
         <div class="flex items-center gap-1 bg-gray-50 border border-gray-300 rounded-2xl px-3 py-2">
           <i class="fa-regular fa-calendar text-gray-500"></i>
-          <input id="fromDate" type="text" class="datepicker w-24 text-center outline-none bg-transparent" placeholder="از">
+          <input id="fromDate" type="text" class="datepicker w-20 text-center outline-none bg-transparent" placeholder="از">
           <span class="text-gray-400 mx-1">–</span>
-          <input id="toDate" type="text" class="datepicker w-24 text-center outline-none bg-transparent" placeholder="تا">
+          <input id="toDate" type="text" class="datepicker w-20 text-center outline-none bg-transparent" placeholder="تا">
         </div>
         <button class="border rounded-lg px-3 py-2 bg-white hover:bg-orange-100">
           <i class="fa-regular fa-bell text-orange-600"></i>
@@ -91,51 +93,80 @@ canvas {
       </div>
     </header>
 
-    <!-- کارت‌های آماری (طبیعی همان HTML تو) -->
+    <!-- Cards -->
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      <div class="bg-white rounded-lg p-4 shadow text-center">
-        <p class="text-gray-400 text-sm">کل فروش</p>
-        <h2 id="card-total-sales" class="text-2xl font-bold text-orange-500">—</h2>
-        <span class="text-xs text-green-500" id="card-total-change">—</span>
+      <div class="bg-white hover:bg-gradient-to-r hover:text-gray-800 p-4 rounded-2xl shadow hover:shadow-md transition text-center border-t-4 border-orange-400">
+        <p class="text-gray-400 text-sm ">کل فروش</p>
+        <h2 id="card-total-sales" class="text-2xl font-bold text-orange-500 mt-1 ">—</h2>
+        <span class="text-xs text-green-500 " id="card-total-change">—</span>
       </div>
-      <div class="bg-white rounded-lg p-4 shadow text-center">
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-md transition text-center border-t-4 border-blue-400">
         <p class="text-gray-400 text-sm">مشتریان جدید</p>
-        <h2 id="card-new-customers" class="text-2xl font-bold">—</h2>
+        <h2 id="card-new-customers" class="text-2xl font-bold mt-1">—</h2>
         <span class="text-xs text-red-500" id="card-cust-change">—</span>
       </div>
-      <div class="bg-white rounded-lg p-4 shadow text-center">
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-md transition text-center border-t-4 border-yellow-400">
         <p class="text-gray-400 text-sm">محصولات مرجوعی</p>
-        <h2 id="card-returns" class="text-2xl font-bold">—</h2>
+        <h2 id="card-returns" class="text-2xl font-bold mt-1">—</h2>
         <span class="text-xs text-red-500">—</span>
       </div>
-      <div class="bg-white rounded-lg p-4 shadow text-center">
+      <div class="bg-white p-4 rounded-2xl shadow hover:shadow-md transition text-center border-t-4 border-green-400">
         <p class="text-gray-400 text-sm">درآمد کل</p>
-        <h2 id="card-total-revenue" class="text-2xl font-bold">$—</h2>
+        <h2 id="card-total-revenue" class="text-2xl font-bold mt-1">—</h2>
         <span class="text-xs text-gray-500">—</span>
       </div>
     </section>
 
-   <!-- بخش خلاصه فیلتر بالای چارت‌ها -->
-<section id="filteredSummary" class="max-w-5xl mx-auto mb-4 text-sm text-gray-600 text-right">
-  نتایج فیلتر: <strong>0</strong> سفارش — مجموع: <strong>0 تومان</strong>
-</section>
+    <!-- Quick Stats -->
+    <section id="dashboardQuickStats" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-gradient-to-br from-orange-50 to-white shadow-sm rounded-2xl p-4 text-center border border-orange-100">
+        <h3 class="text-sm text-gray-500">فروش این هفته</h3>
+        <p id="weekRevenue" class="text-2xl font-bold text-orange-600 mt-2">—</p>
+        <small id="weekCount" class="text-xs text-gray-400 block mt-1"></small>
+      </div>
+      <div class="bg-gradient-to-br from-orange-50 to-white shadow-sm rounded-2xl p-4 text-center border border-orange-100">
+        <h3 class="text-sm text-gray-500">فروش این ماه</h3>
+        <p id="monthRevenue" class="text-2xl font-bold text-orange-600 mt-2">—</p>
+        <small id="monthCount" class="text-xs text-gray-400 block mt-1"></small>
+      </div>
+      <div class="bg-gradient-to-br from-orange-50 to-white shadow-sm rounded-2xl p-4 text-center border border-orange-100">
+        <h3 class="text-sm text-gray-500">فروش سالانه</h3>
+        <p id="yearRevenue" class="text-2xl font-bold text-orange-600 mt-2">—</p>
+        <small id="yearCount" class="text-xs text-gray-400 block mt-1"></small>
+      </div>
+    </section>
 
-<!-- چارت‌ها -->
-<section class="charts grid grid-cols-1 md:grid-cols-2 gap-6">
-  <div class="card p-4 shadow rounded-lg">
-    <h3 class="font-semibold mb-4">تحلیل درآمد</h3>
-    <canvas id="revenueChart"></canvas>
-  </div>
-  <div class="card p-4 shadow rounded-lg">
-    <h3 class="font-semibold mb-4">سود و زیان</h3>
-    <canvas id="profitChart"></canvas>
-  </div>
-</section>
+    <!-- Filter Summary -->
+    <section id="filteredSummary" class="max-w-5xl mx-auto mb-4 text-sm text-gray-600 text-right">
+      نتایج فیلتر: <strong>0</strong> سفارش — مجموع: <strong>0 تومان</strong>
+    </section>
 
+    <!-- Charts -->
+    <section class="charts grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="card bg-white p-4 rounded-2xl shadow hover:shadow-md transition">
+        <h3 class="font-semibold mb-4 text-orange-600">تحلیل درآمد</h3>
+        <canvas id="revenueChart"></canvas>
+      </div>
+      <div class="card bg-white p-4 rounded-2xl shadow hover:shadow-md transition">
+        <h3 class="font-semibold mb-4 text-orange-600">سود و زیان</h3>
+        <canvas id="profitChart"></canvas>
+      </div>
+    </section>
   </main>
 
-  <!-- JS Script -->
+  <!-- JS اتصال به dashboard.js -->
   <script type="module" src="./src/dashboard.js"></script>
 
+  <!-- Sidebar Toggle -->
+  <script>
+    const toggle = document.getElementById("toggleSidebar");
+    const sidebar = document.getElementById("sidebar");
+    const main = document.querySelector("main");
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+      main.classList.toggle("mr-64");
+      main.classList.toggle("mr-20");
+    });
+  </script>
 </body>
 </html>
