@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت سفارشات</title>
+
+  <!-- TailwindCSS -->
+
+  <!-- آیکون‌ها و کتابخانه‌ها -->
+     <link rel="stylesheet" href="../css/styles.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css" />
+
+  <script src="https://unpkg.com/jquery@3.6.4/dist/jquery.min.js"></script>
+  <script src="https://unpkg.com/persian-date/dist/persian-date.min.js"></script>
+  <script src="https://unpkg.com/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .stat-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(249, 115, 22, 0.15);
+      border-radius: 16px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(249, 115, 22, 0.08);
+    }
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.2);
+      border-color: rgba(249, 115, 22, 0.3);
+    }
+  </style>
+</head>
+<body class="flex bg-gray-50 text-gray-800">
+
+  <!-- Sidebar -->
+  <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
+    <div>
+      <h2 class="text-xl font-bold mb-4">منو</h2>
+      <nav class="flex flex-col gap-2">
+        <a href="admin-dashboard.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-chart-line"></i> داشبورد
+        </a>
+        <a href="customers.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-users"></i> مشتریان
+        </a>
+        <a href="products.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-box"></i> محصولات
+        </a>
+          <a href="categories.html" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-layer-group"></i> دسته‌بندی‌ها
+        </a>
+        <a href="orders.html" class="menu-item active py-3 px-5 flex items-center gap-3 rounded bg-orange-50 text-orange-600">
+          <i class="fa-solid fa-cart-shopping"></i> سفارشات
+        </a>
+      </nav>
+    </div>
+    <div class="p-4 border-t">
+      <button class="w-full flex items-center justify-center bg-red-100 text-red-600 rounded-lg py-2 hover:bg-red-200 transition">
+        <i class="fa-solid fa-right-from-bracket ml-2"></i> خروج
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 mr-64 p-6 transition-all">
+    <!-- Header -->
+    <header class="flex flex-wrap items-center justify-between mb-6 bg-white p-4 rounded-xl shadow-sm sticky top-2 z-10">
+      <div class="flex items-center gap-3">
+        <button class="bg-orange-100 text-orange-600 p-2 rounded-lg hover:bg-orange-200">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h1 class="text-xl font-bold">مدیریت سفارشات</h1>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <input id="searchOrderInput" type="text" placeholder="جستجو سفارش/مشتری..."
+               class="border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-orange-400 outline-none" />
+        <div class="flex items-center gap-1 bg-gray-50 border border-gray-300 rounded-2xl px-3 py-2">
+          <i class="fa-regular fa-calendar text-gray-500"></i>
+          <input id="fromDate" type="text" class="datepicker w-20 text-center outline-none bg-transparent" placeholder="از">
+          <span class="text-gray-400 mx-1">–</span>
+          <input id="toDate" type="text" class="datepicker w-20 text-center outline-none bg-transparent" placeholder="تا">
+        </div>
+        <button id="createOrderBtn" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 flex items-center gap-2">
+          <i class="fa-solid fa-plus"></i> ایجاد سفارش
+        </button>
+        <button id="exportOrdersBtn" class="border rounded-lg px-3 py-2 bg-white hover:bg-orange-100 flex items-center gap-2">
+          <i class="fa-solid fa-print text-orange-600"></i> پرینت
+        </button>
+      </div>
+    </header>
+
+
+<!-- کارت‌های آماری سفارشات -->
+<section class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
+  <div class="stat-card p-5 text-center">
+    <p class="text-sm text-gray-500">کل سفارشات هفته گذشته</p>
+    <h2 id="card-week-orders" class="text-3xl font-bold text-orange-600 mt-2">—</h2>
+    <span class="text-xs text-gray-500">مقایسه با هفته قبل</span>
+  </div>
+
+  <div class="stat-card p-5 text-center">
+    <p class="text-sm text-gray-500">سفارشات برگشتی</p>
+    <h2 id="card-returns" class="text-3xl font-bold text-red-500 mt-2">—</h2>
+    <span class="text-xs text-gray-500">مقایسه با هفته قبل</span>
+  </div>
+
+  <div class="stat-card p-5 text-center">
+    <p class="text-sm text-gray-500">سفارشات موفق</p>
+    <h2 id="card-success-orders" class="text-3xl font-bold text-green-500 mt-2">—</h2>
+    <span class="text-xs text-gray-500">مقایسه با هفته قبل</span>
+  </div>
+
+  <div class="stat-card p-5 text-center">
+    <p class="text-sm text-gray-500">درآمد کل</p>
+    <h2 id="card-total-revenue" class="text-3xl font-bold text-blue-500 mt-2">—</h2>
+    <span class="text-xs text-gray-500">مقایسه با هفته قبل</span>
+  </div>
+</section>
+
+
+    <!-- Filter Summary -->
+    <section id="filteredSummary" class="max-w-5xl mx-auto mb-4 text-sm text-gray-600 text-right">
+      نتایج فیلتر: <strong>0</strong> سفارش — مجموع: <strong>0 تومان</strong>
+    </section>
+
+    <!-- Orders Table -->
+    <div class="overflow-x-auto bg-white p-4 rounded-2xl shadow">
+      <table class="w-full border-collapse">
+        <thead class="bg-orange-100 text-orange-700">
+          <tr>
+            <th class="p-2 border">سفارش</th>
+            <th class="p-2 border">تاریخ</th>
+            <th class="p-2 border">مشتری</th>
+            <th class="p-2 border">خرید</th>
+            <th class="p-2 border">کل قیمت</th>
+            <th class="p-2 border">دریافت</th>
+            <th class="p-2 border">تعداد</th>
+            <th class="p-2 border">عمل</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTableBody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- JS -->
+  <script type="module" src="./src/panel-orders.js"></script>
+
+  <!-- Sidebar Toggle -->
+  <script>
+    const toggle = document.getElementById("toggleSidebar");
+    const sidebar = document.querySelector(".sidebar");
+    const main = document.querySelector("main");
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
+      main.classList.toggle("mr-64");
+      main.classList.toggle("mr-20");
+    });
+  </script>
+</body>
+</html>

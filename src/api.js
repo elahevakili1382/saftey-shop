@@ -29,7 +29,7 @@ export async function fetchProducts() {
 
 export async function fetchUsers() {
   try {
-    const data = await safeFetch(`${BASE_URL}/users`);
+    const data = await safeFetch(`${BASE_URL}/users?limit=100`);
     return data.users || [];
   } catch (e) {
     console.error('fetchUsers error', e);

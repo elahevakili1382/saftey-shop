@@ -6,7 +6,6 @@
   <title>داشبورد مدیریتی</title>
 
   <!-- TailwindCSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- آیکون‌ها و کتابخانه‌ها -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -38,30 +37,30 @@
 <body class="flex bg-gray-50 text-gray-800">
 
   <!-- Sidebar -->
-  <aside id="sidebar"
-         class="sidebar bg-white w-64 h-screen fixed right-0 top-0 flex flex-col justify-between shadow-lg z-20 transition-all">
-    <div class="p-4">
-      <h1 class="text-2xl font-bold text-orange-500 mb-6 text-center">
-        <i class="fa-solid fa-store text-orange-500 mr-1"></i> <span class="menu-text">مدیریت</span>
-      </h1>
-      <nav class="flex flex-col gap-2 text-sm">
-        <a href="admin-dashbord.html" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-orange-50 text-orange-600 bg-orange-100 font-medium">
-          <i class="fa-solid fa-chart-line"></i> <span class="menu-text">داشبورد</span>
+ <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
+    <div>
+      <h2 class="text-xl font-bold mb-4">منو</h2>
+      <nav class="flex flex-col gap-2">
+        <a href="admin-dashboard.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded bg-orange-50 text-orange-600">
+          <i class="fa-solid fa-chart-line"></i> داشبورد
         </a>
-        <a href="customers.html" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-gray-100">
-          <i class="fa-solid fa-users"></i> <span class="menu-text">مشتریان</span>
+        <a href="customers.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-users"></i> مشتریان
         </a>
-        <a href="products.html" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-gray-100">
-          <i class="fa-solid fa-box"></i> <span class="menu-text">محصولات</span>
+        <a href="products.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-box"></i> محصولات
         </a>
-        <a href="#" class="flex items-center gap-3 py-2 px-4 rounded-lg hover:bg-gray-100">
-          <i class="fa-solid fa-gear"></i> <span class="menu-text">تنظیمات</span>
+        <a href="categories.html" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-layer-group"></i> دسته‌بندی‌ها
+        </a>
+        <a href="orders.html" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-cart-shopping"></i> سفارشات
         </a>
       </nav>
     </div>
     <div class="p-4 border-t">
-      <button class="w-full flex items-center justify-center bg-red-50 text-red-600 py-2 rounded-lg hover:bg-red-100 transition">
-        <i class="fa-solid fa-right-from-bracket ml-2"></i> <span class="menu-text">خروج</span>
+      <button class="w-full flex items-center justify-center bg-red-100 text-red-600 rounded-lg py-2 hover:bg-red-200 transition">
+        <i class="fa-solid fa-right-from-bracket ml-2"></i> خروج
       </button>
     </div>
   </aside>

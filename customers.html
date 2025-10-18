@@ -38,6 +38,8 @@
 
     thead {
       background: linear-gradient(90deg, #ffedd5, #fff7ed);
+        border-bottom: 2px solid #f97316; 
+
     }
 
     th {
@@ -46,10 +48,12 @@
       font-weight: 600;
       font-size: 0.9rem;
       padding: 0.75rem 1rem;
+        border: 1px solid #e5e7eb;
+
     }
 
     td {
-      border-top: 1px solid #f3f4f6;
+        border: 1px solid #e5e7eb;
       padding: 0.75rem 1rem;
       font-size: 0.85rem;
     }
@@ -80,21 +84,24 @@
 <body class="bg-gray-50 text-gray-800">
 
   <!-- Sidebar (مثل داشبوردت) -->
-  <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
+ <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
     <div>
       <h2 class="text-xl font-bold mb-4">منو</h2>
       <nav class="flex flex-col gap-2">
         <a href="admin-dashbord.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
           <i class="fa-solid fa-chart-line"></i> داشبورد
         </a>
-        <a href="#" class="menu-item active py-3 px-5 flex items-center gap-3 rounded bg-orange-50 text-orange-600">
+        <a href="customers.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded bg-orange-50 text-orange-600">
           <i class="fa-solid fa-users"></i> مشتریان
         </a>
         <a href="products.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
           <i class="fa-solid fa-box"></i> محصولات
         </a>
-        <a href="#" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
-          <i class="fa-solid fa-gear"></i> تنظیمات
+        <a href="categories.html" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-layer-group"></i> دسته‌بندی‌ها
+        </a>
+          <a href="orders.html" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-cart-shopping"></i> سفارشات
         </a>
       </nav>
     </div>
@@ -128,14 +135,17 @@
       <div class="stat-card p-5 text-center">
         <p class="text-sm text-gray-500">مجموع مشتریان</p>
         <h2 id="totalCustomers" class="text-3xl font-bold text-orange-600 mt-2">—</h2>
+        <span class="text-xs text-gray-500">تمامی مشتریان ثبت نام شده </span>
       </div>
       <div class="stat-card p-5 text-center">
         <p class="text-sm text-gray-500">مشتریان جدید</p>
         <h2 id="newCustomers" class="text-3xl font-bold text-orange-600 mt-2">—</h2>
+        <span class="text-xs text-gray-500">مشتریان ثبت نام شده در این ماه </span>
       </div>
       <div class="stat-card p-5 text-center">
         <p class="text-sm text-gray-500">مشتریان فعال</p>
         <h2 id="activeCustomers" class="text-3xl font-bold text-orange-600 mt-2">—</h2>
+        <span class="text-xs text-gray-500">مشتریانی که در طی 30 روز خرید داشتند </span>
       </div>
     </section>
 
@@ -150,13 +160,13 @@
         <table>
           <thead>
             <tr>
-              <th>شناسه</th>
-              <th>مشخصات مشتری</th>
-              <th>کشور</th>
-              <th>تاریخ ایجاد</th>
-              <th>آخرین خرید</th>
-              <th>مجموع خرید</th>
-              <th>وضعیت</th>
+               <th class="border border-gray-200 p-2">شناسه</th>
+      <th class="border border-gray-200 p-2">مشخصات مشتری</th>
+      <th class="border border-gray-200 p-2">کشور</th>
+      <th class="border border-gray-200 p-2">تاریخ ایجاد</th>
+      <th class="border border-gray-200 p-2">آخرین خرید</th>
+      <th class="border border-gray-200 p-2">مجموع خرید</th>
+      <th class="border border-gray-200 p-2">وضعیت</th>
             </tr>
           </thead>
           <tbody id="customerTable">

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مدیریت دسته‌بندی‌ها</title>
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      background-color: #f9fafb;
+    }
+
+    .category-card {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(249, 115, 22, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 4px 14px rgba(249, 115, 22, 0.08);
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 18px rgba(249, 115, 22, 0.2);
+    }
+    .edit-icon {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      color: #f97316;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .edit-icon:hover {
+      color: #ea580c;
+      transform: scale(1.1);
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    .modal.active {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Sidebar -->
+  <aside class="sidebar bg-white shadow-md h-screen w-60 flex flex-col justify-between fixed right-0 mr-2 rounded-2xl p-4">
+    <div>
+      <h2 class="text-xl font-bold mb-4">منو</h2>
+      <nav class="flex flex-col gap-2">
+        <a href="admin-dashbord.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-chart-line"></i> داشبورد
+        </a>
+        <a href="customers.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-users"></i> مشتریان
+        </a>
+        <a href="products.html" class="menu-item py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-box"></i> محصولات
+        </a>
+        <a href="#" class="menu-item active py-3 px-5 flex items-center gap-3 rounded bg-orange-50 text-orange-600">
+          <i class="fa-solid fa-layer-group"></i> دسته‌بندی‌ها
+        </a>
+         <a href="orders.html" class="menu-item active py-3 px-5 flex items-center gap-3 rounded hover:bg-orange-100">
+          <i class="fa-solid fa-cart-shopping"></i> سفارشات
+        </a>
+      </nav>
+    </div>
+    <div class="p-4 border-t">
+      <button class="w-full flex items-center justify-center bg-red-100 text-red-600 rounded-lg py-2 hover:bg-red-200 transition">
+        <i class="fa-solid fa-right-from-bracket ml-2"></i> خروج
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 mr-64 p-6">
+    <header class="flex flex-wrap items-center justify-between mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">مدیریت دسته‌بندی‌ها</h1>
+      <div class="flex items-center gap-3">
+        <input id="searchCategoryInput" type="text" placeholder="جستجوی دسته‌بندی..." class="border rounded-lg px-4 py-2 w-64 outline-none focus:ring-2 focus:ring-orange-400">
+        <button id="addCategoryBtn" class="bg-orange-500 text-white px-5 py-2 rounded-lg hover:bg-orange-600 transition">
+          <i class="fa-solid fa-plus ml-1"></i> افزودن دسته‌بندی
+        </button>
+      </div>
+    </header>
+
+    <!-- کارت‌ها -->
+    <section id="categoriesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- کارت‌ها توسط JS اضافه می‌شوند -->
+    </section>
+  </main>
+
+  <!-- Modal افزودن دسته‌بندی -->
+  <div id="categoryModal" class="modal">
+    <div class="bg-white rounded-2xl shadow-lg p-6 w-96 relative">
+      <h2 id="modalTitle" class="text-xl font-semibold mb-4">افزودن دسته‌بندی جدید</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <input id="newCategoryName" type="text" placeholder="نام دسته‌بندی" class="border rounded-lg px-3 py-2">
+        <textarea id="newCategoryProducts" rows="3" placeholder="محصولات مرتبط (مثلاً helmet, gloves)" class="border rounded-lg px-3 py-2"></textarea>
+      </div>
+      <div class="flex justify-between mt-4">
+        <button id="deleteCategoryBtn" class="hidden text-red-600 px-4 py-2 hover:bg-red-100 rounded">حذف دسته</button>
+        <div class="flex gap-2">
+          <button id="cancelModal" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">انصراف</button>
+          <button id="confirmAddCategory" class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">ذخیره</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script type="module" src="./src/categories.js"></script>
+</body>
+</html>

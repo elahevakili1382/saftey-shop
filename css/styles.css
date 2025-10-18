@@ -114,3 +114,27 @@ canvas {
   max-height: 350px; /* ارتفاع بیشتر */
   border-radius: 16px;
 }
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem; /* پدینگ مناسب */
+  border-radius: 0.5rem;    /* گوشه‌های گرد */
+  font-size: 0.875rem;      /* کمی کوچک‌تر */
+  font-weight: 500;
+  text-align: center;
+  min-width: 70px;
+}
+
+.status-pending {
+  background-color: #FFEDD5; /* نارنجی ملایم */
+  color: #C2410C;           /* نارنجی تیره متن */
+}
+
+.status-success {
+  background-color: #DCFCE7; /* سبز ملایم */
+  color: #15803D;           /* سبز تیره متن */
+}
+
+.status-canceled {
+  background-color: #FEE2E2; /* قرمز ملایم */
+  color: #B91C1C;           /* قرمز تیره متن */
+}
