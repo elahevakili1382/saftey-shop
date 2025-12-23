@@ -63,22 +63,22 @@
         <div class="absolute w-36 h-36 bg-orange-200 rounded-full -left-10 -bottom-10 z-0"></div>
 
         <div class="relative z-10 bg-white text-gray-800 rounded-xl shadow-lg p-6 sm:p-8">
-          <form class="space-y-4 text-right">
+          <form id="contactForm" class="space-y-4 text-right">
             <div>
               <label class="text-sm">نام</label>
-              <input type="text" placeholder="نام" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm" />
+              <input id="name" type="text" placeholder="نام" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm" />
             </div>
             <div>
               <label class="text-sm">تلفن</label>
-              <input type="text" placeholder="تلفن" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm" />
+              <input id="phone" type="text" placeholder="تلفن" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm" />
             </div>
             <div>
               <label class="text-sm">ایمیل</label>
-              <input type="email" placeholder="ایمیل" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm" />
+              <input id="email" type="email" placeholder="ایمیل" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm" />
             </div>
             <div>
               <label class="text-sm">توضیحات</label>
-              <textarea rows="4" placeholder="پیام شما..." class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm"></textarea>
+              <textarea id="message" rows="4" placeholder="پیام شما..." class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-400 outline-none text-sm"></textarea>
             </div>
             <button class="w-full bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-md font-semibold transition">
               ارسال پیام
@@ -89,6 +89,6 @@
 
     </div>
   </div>
-  <script type="module" src="./src/main.js" defer></script>
+  <script type="module" src="./src/contact.js" defer></script>
 </body>
 </html>

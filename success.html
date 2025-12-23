@@ -25,36 +25,37 @@
     </p>
 
     <!-- اطلاعات پرداخت -->
-    <section class="bg-green-100 rounded-lg p-4 sm:p-6 mb-8 shadow-inner">
-      <ul class="space-y-3 sm:space-y-4 text-gray-800 text-sm sm:text-base">
+  <section class="bg-green-100 rounded-lg p-4 sm:p-6 mb-8 shadow-inner">
+  <ul class="space-y-3 sm:space-y-4 text-gray-800 text-sm sm:text-base">
 
-        <li class="flex justify-between border-b border-green-300 pb-2">
-          <span class="font-semibold">تاریخ و زمان:</span>
-          <span>۱۴۰۲/۰۴/۲۵ - ۱۵:۳۰</span>
-        </li>
+    <li class="flex justify-between border-b border-green-300 pb-2">
+      <span class="font-semibold">تاریخ و زمان:</span>
+      <span id="paymentDate">—</span>
+    </li>
 
-        <li class="flex justify-between border-b border-green-300 pb-2">
-          <span class="font-semibold">مبلغ خرید:</span>
-          <span>۲,۵۰۰,۰۰۰ تومان</span>
-        </li>
+    <li class="flex justify-between border-b border-green-300 pb-2">
+      <span class="font-semibold">مبلغ خرید:</span>
+      <span id="paymentAmount">—</span>
+    </li>
 
-        <li class="flex justify-between border-b border-green-300 pb-2">
-          <span class="font-semibold">بانک صادرکننده:</span>
-          <span>ملت (**** 1234 - **** 5678)</span>
-        </li>
+    <li class="flex justify-between border-b border-green-300 pb-2">
+      <span class="font-semibold">بانک صادرکننده:</span>
+      <span id="paymentBank">—</span>
+    </li>
 
-        <li class="flex justify-between border-b border-green-300 pb-2">
-          <span class="font-semibold">شماره پیگیری:</span>
-          <span>۱۲۳۴۵۶۷۸۹</span>
-        </li>
+    <li class="flex justify-between border-b border-green-300 pb-2">
+      <span class="font-semibold">شماره پیگیری:</span>
+      <span id="trackingNumber">—</span>
+    </li>
 
-        <li class="flex justify-between">
-          <span class="font-semibold">شماره مرجع:</span>
-          <span>۹۸۷۶۵۴۳۲۱</span>
-        </li>
+    <li class="flex justify-between">
+      <span class="font-semibold">شماره مرجع:</span>
+      <span id="referenceNumber">—</span>
+    </li>
 
-      </ul>
-    </section>
+  </ul>
+</section>
+
 
     <!-- دکمه‌ها -->
     <div class="flex flex-col sm:flex-row gap-4">
@@ -68,6 +69,6 @@
 
   </main>
 
-<script type="module" src="./src/main.js" defer></script>
+<script type="module" src="./src/success.js" defer></script>
 </body>
 </html>
